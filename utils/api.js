@@ -1,0 +1,52 @@
+/**
+ * Calls the Falabella 3PL endpoint to generate a shipment label.
+ *
+ * @param {string} shipmentId - The shipment ID to process
+ * @param {string} token - Bearer token for authentication
+ * @returns {Promise<boolean>} - Returns true if the call succeeded
+ */
+
+import { apiCall } from "./apiClient.js";
+import { config } from "../config.js";
+
+export async function generateLabel(shipmentId, country) {
+  const url = `${config.baseUrl}/shipments/${shipmentId}/labels`;
+
+  const result = await apiCall({
+    url,
+    method: "POST",
+    body: {
+      data: {
+        fileType: "PDF",
+      },
+    },
+    headers: {
+      country,
+      reprocessed: true
+    },
+  });
+
+  if (!result.ok) {
+    console.error(`❌ Failed for ${shipmentId}`, result.status);
+    return { error: result.error, status: result.status };
+  }
+
+  console.log(`✅ OK for shipment ${shipmentId}`);
+  return result.data?.data?.[0];
+}
+
+export async function getShipmentById(shipmentId) {
+  const url = `${config.baseUrl}/shipments/${shipmentId}`;
+
+  const result = await apiCall({
+    url,
+    method: "GET",
+  });
+
+  if (!result.ok) {
+    console.error(`❌ Failed to fetch shipment ${shipmentId}`, result.error);
+    return null;
+  }
+
+  return result.data;
+}

@@ -50,3 +50,26 @@ export async function getShipmentById(shipmentId) {
 
   return result.data;
 }
+
+export async function getShipmentsFromOrder(orderId) {
+  const url = `${config.baseUrl}/shipments/order-number/${orderId}`;
+
+  const result = await apiCall({
+    url,
+    method: "GET",
+  });
+
+  if (!result.ok) {
+    console.error(`❌ Failed to fetch shipments for order ${orderId}`, result.error);
+    return [];
+  }
+
+  const shipments = result.data?.data;
+
+  if (!Array.isArray(shipments)) {
+    console.error(`❌ Unexpected response format for order ${orderId}`, result.data);
+    return [];
+  }
+
+  return shipments;
+}

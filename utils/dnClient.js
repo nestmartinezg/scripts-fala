@@ -53,3 +53,34 @@ export async function getDnNodeInfo(nodeId, carrierCode, country) {
     return null; // do NOT throw
   }
 }
+
+export async function getAncestorsInfo(municipalCodeId, country) {
+  try {
+    const token = await getDnToken();
+
+    const url = `${config.dnUrl}/geographic/political/${municipalCodeId}/ancestors`;
+    const response = await axios.get(url, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "x-environment": config.dnEnv,
+        "x-country": country,
+        "x-commerce": "Sodimac",
+      },
+    });
+
+
+    const items = response.data;
+    if (!Array.isArray(items)) return null;
+
+    const town = items.find((i) => i.type === "TOWN");
+    const district = items.find((i) => i.type === "DISTRICT");
+
+    return {
+      townName: town?.name || null,
+      districtName: district?.name || null,
+    };
+  } catch (err) {
+    console.error("❌ DN ancestors lookup failed:", err.message);
+    return null;
+  }
+}

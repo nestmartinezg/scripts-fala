@@ -1,1 +1,359 @@
-{"carrier": "blueexpress","trackingNumber": "1034351780","date": "2026-04-07 12:36:59","status": "delivered"}
+{"shipmentId":"be065fdd-5883-46a1-ad8c-6afb34af7ad3","townName":"QUILPUÉ - EL BELLOTO","districtName":"QUILPUÉ"}
+{"shipmentId":"47e18620-6aba-480c-9572-a225c1b4a565","townName":"ANTOFAGASTA - CALETA COLOSO","districtName":"ANTOFAGASTA"}
+{"shipmentId":"7f88e076-cf12-4554-86a6-c624234472c6","townName":null,"districtName":"PEÑALOLÉN"}
+{"shipmentId":"cbf74190-638c-4e5c-94ec-a76688fe6268","townName":null,"districtName":"ESTACIÓN CENTRAL"}
+{"shipmentId":"2d30d64d-ffe9-42eb-a55d-41388fe610bc","townName":null,"districtName":"SAN RAMÓN"}
+{"shipmentId":"84b8a417-6cd7-40dc-87b3-7a526f355cea","townName":null,"districtName":"LA FLORIDA"}
+{"shipmentId":"1225d53f-fc52-4cb4-9994-f085d9399d74","townName":"OVALLE - SOTAQUI","districtName":"OVALLE"}
+{"shipmentId":"d6a09148-1158-44bd-af2e-6094e8ce46d2","townName":null,"districtName":"SAN RAMÓN"}
+{"shipmentId":"7e34a128-ddaa-4378-85a6-8b173f2bf17c","townName":"TEMUCO - TEMUCO","districtName":"TEMUCO"}
+{"shipmentId":"96ef89a4-f226-40f1-9fd9-46b05b7b8eee","townName":"CORONEL","districtName":"CORONEL"}
+{"shipmentId":"1516f75b-8959-42ae-adfa-331100683bad","townName":"YERBAS BUENAS","districtName":"YERBAS BUENAS"}
+{"shipmentId":"339d3cc1-fb2c-4225-abc6-32550c224792","townName":null,"districtName":"LA REINA"}
+{"shipmentId":"f3f53145-ca5f-490a-aa00-8311e16af767","townName":null,"districtName":"EL BOSQUE"}
+{"shipmentId":"ed370130-c168-49a9-8c48-17a5ac4c9afa","townName":null,"districtName":"ESTACIÓN CENTRAL"}
+{"shipmentId":"dd1c316e-88d7-456f-bf99-05c011db3715","townName":"ANCUD - CHACAO","districtName":"ANCUD"}
+{"shipmentId":"f37dae87-dcde-4bcd-a2ff-cc7e4bad3726","townName":null,"districtName":"CONCHALÍ"}
+{"shipmentId":"c75b1715-e5fe-41b2-84a9-83f7940ab981","townName":null,"districtName":"SAN JOAQUÍN"}
+{"shipmentId":"3c314914-5cb6-4491-a6e7-8a1341242692","townName":null,"districtName":"INDEPENDENCIA"}
+{"shipmentId":"59bf28a3-1600-458c-9437-c52000f33e8d","townName":null,"districtName":"LAS CONDES"}
+{"shipmentId":"9f24bac3-0215-40d8-ad56-195aaf043fc4","townName":"MAULE","districtName":"MAULE"}
+{"shipmentId":"4c5d20d4-10e9-4295-bb14-fcd140d0d5fb","townName":null,"districtName":"LA FLORIDA"}
+{"shipmentId":"9f6e0678-5b7f-48c3-95cb-abbd6e2f887d","townName":null,"districtName":"LA CISTERNA"}
+{"shipmentId":"a46d6a42-13fb-42cf-bcd0-87ad5d391926","townName":null,"districtName":"INDEPENDENCIA"}
+{"shipmentId":"5f6ab799-589a-41e7-ad94-977d31ba619d","townName":"PUCÓN - CABURGA","districtName":"PUCÓN"}
+{"shipmentId":"10b8a610-aaf9-4a72-8667-fc34f1a71a74","townName":"MONTE PATRIA","districtName":"MONTE PATRIA"}
+{"shipmentId":"cd563e6e-4e2d-4a36-8201-b736eb6340ba","townName":"MONTE PATRIA","districtName":"MONTE PATRIA"}
+{"shipmentId":"a67724b8-0170-42a3-b52d-3d4e6890ef6c","townName":"LA SERENA - LA SERENA","districtName":"LA SERENA"}
+{"shipmentId":"3ada9d72-1bd1-4db5-a20e-d1434e7a2a65","townName":"CONTULMO","districtName":"CONTULMO"}
+{"shipmentId":"75fe9a6a-8136-44c3-a060-4c26632e9272","townName":null,"districtName":"CERRO NAVIA"}
+{"shipmentId":"bf55c79d-c258-4837-a08f-45cf5559b5fb","townName":null,"districtName":"LA FLORIDA"}
+{"shipmentId":"7468ad3c-d695-43b4-bce8-f8add93deda4","townName":"LOS ÁNGELES - SAN CARLOS DE PUREN","districtName":"LOS ÁNGELES"}
+{"shipmentId":"c94b67d2-b574-4199-8f56-c641f7b78ab4","townName":null,"districtName":"MACUL"}
+{"shipmentId":"48ee66c4-0741-4a0a-b7cb-3b1204a091d2","townName":null,"districtName":"PROVIDENCIA"}
+{"shipmentId":"54228439-1aea-4e13-958e-b81b19cd6156","townName":null,"districtName":"MAIPÚ"}
+{"shipmentId":"b41ff550-a835-4f34-a943-1c2cbde62f34","townName":"ALHUÉ","districtName":"ALHUÉ"}
+{"shipmentId":"60b1c42c-6971-455a-8e28-f81d9c402886","townName":"ALHUÉ","districtName":"ALHUÉ"}
+{"shipmentId":"7a7e3d33-a337-420e-8ace-c37c49d7f56e","townName":"ANGOL","districtName":"ANGOL"}
+{"shipmentId":"ae9d5f7c-17a6-4a31-ac91-af438a5d22c7","townName":"ALHUÉ","districtName":"ALHUÉ"}
+{"shipmentId":"24c585f5-da07-4350-b652-416466113477","townName":"ALHUÉ","districtName":"ALHUÉ"}
+{"shipmentId":"264da238-21af-42b5-9a30-b89cf98232d2","townName":"ALHUÉ","districtName":"ALHUÉ"}
+{"shipmentId":"b69b4a5e-5eb0-4ec6-a7ee-971c008e3fe7","townName":"ALHUÉ","districtName":"ALHUÉ"}
+{"shipmentId":"0f06461e-2704-405f-9d2c-72a36772a868","townName":"ANGOL","districtName":"ANGOL"}
+{"shipmentId":"833f1276-7dec-487b-b8dd-29b2bdead22f","townName":null,"districtName":"PROVIDENCIA"}
+{"shipmentId":"38d9db48-4f30-4e91-91b1-d0059f7eae07","townName":"NATALES - PUERTO NATALES","districtName":"NATALES"}
+{"shipmentId":"8b98c997-8b16-4a87-9506-ffec633b52f2","townName":null,"districtName":"MACUL"}
+{"shipmentId":"0f054cb7-d9dc-4a7a-adb1-66ae24998d23","townName":null,"districtName":"LA FLORIDA"}
+{"shipmentId":"943ed9d0-4350-458e-8614-ce542a23ade0","townName":null,"districtName":"LAS CONDES"}
+{"shipmentId":"953281c6-6f60-48d5-a4ca-00240ca655c4","townName":"CORRAL - CHAIHUIN","districtName":"CORRAL"}
+{"shipmentId":"869b9618-fc41-49d5-a4a8-27121afb284c","townName":"VILLARRICA - LICAN RAY","districtName":"VILLARRICA"}
+{"shipmentId":"1a73e66e-86f0-4292-9fcf-5f6c8087e505","townName":null,"districtName":"CERRILLOS"}
+{"shipmentId":"577da865-178f-4578-ad0c-cc11daeb8b2c","townName":"ALTO BIOBÍO","districtName":"ALTO BIOBÍO"}
+{"shipmentId":"9b8df4cb-77bd-4ea3-95d4-6891175d2407","townName":"ALHUÉ","districtName":"ALHUÉ"}
+{"shipmentId":"c86aa553-9af8-42d8-a517-2f2716c335c2","townName":null,"districtName":"SAN MIGUEL"}
+{"shipmentId":"7a68d728-2b59-4e34-91ab-972b558442c7","townName":"ANDACOLLO","districtName":"ANDACOLLO"}
+{"shipmentId":"d1c3e4b6-c762-4000-98e2-fbf8fa7bd3b8","townName":null,"districtName":"LA FLORIDA"}
+{"shipmentId":"88b21f2f-86ec-4a44-bb0c-48d6fbb02a6d","townName":null,"districtName":"QUINTA NORMAL"}
+{"shipmentId":"8b25f85e-a75a-4761-8f95-252a6c56520c","townName":"CAUQUENES - CAUQUENES","districtName":"CAUQUENES"}
+{"shipmentId":"68569f47-3b78-44d9-8d54-527484d418ed","townName":null,"districtName":"HUECHURABA"}
+{"shipmentId":"e868b3bc-dde7-4e89-8f71-d2d7e0123405","townName":null,"districtName":"QUILICURA"}
+{"shipmentId":"0554dde7-1479-45d5-a318-cf87b06cef4c","townName":null,"districtName":"PUENTE ALTO"}
+{"shipmentId":"7bbd9e54-d324-4268-aad3-e268f05e15a4","townName":"ALHUÉ","districtName":"ALHUÉ"}
+{"shipmentId":"998bdaae-6491-42b3-9dd0-aa6aca80ebfb","townName":"ALHUÉ","districtName":"ALHUÉ"}
+{"shipmentId":"5d13ffe2-c4d3-40e8-855d-c334d9958936","townName":"ALHUÉ","districtName":"ALHUÉ"}
+{"shipmentId":"490d4c92-19f8-47e1-a098-fc0746b0b5ea","townName":"BUIN - MAIPO","districtName":"BUIN"}
+{"shipmentId":"53ff899a-7cb9-4758-bf3d-da6835e8602d","townName":"ANCUD - ANCUD","districtName":"ANCUD"}
+{"shipmentId":"7cf88f74-7932-40f8-a9e7-aa02ce8f104e","townName":"ANCUD - ANCUD","districtName":"ANCUD"}
+{"shipmentId":"9047b04e-43c0-434d-b089-caeda9ab3e05","townName":"ALHUÉ","districtName":"ALHUÉ"}
+{"shipmentId":"a19d09e3-1804-4999-9d68-ce829c545083","townName":null,"districtName":"MACUL"}
+{"shipmentId":"276ba275-a844-418b-a4c0-d4ee867786bb","townName":"ALGARROBO - ALGARROBO","districtName":"ALGARROBO"}
+{"shipmentId":"6ee4c1a0-7d0b-4961-a4ad-8fe4a4da5d2f","townName":"ANGOL","districtName":"ANGOL"}
+{"shipmentId":"db6d26d8-a0a5-444c-80b5-cf9bd31f2721","townName":"ANGOL","districtName":"ANGOL"}
+{"shipmentId":"f8afe8b5-8db5-4e4a-a657-5724acc6857c","townName":"DIEGO DE ALMAGRO - EL SALVADOR","districtName":"DIEGO DE ALMAGRO"}
+{"shipmentId":"bfc76ce1-ca4f-4f31-a8b1-32d5f3e6baca","townName":"PENCO - LIRQUEN","districtName":"PENCO"}
+{"shipmentId":"34b02572-e3e2-47d8-b475-c49eb343ae9c","townName":null,"districtName":"EL BOSQUE"}
+{"shipmentId":"ea9767ce-6395-478c-8677-8dff2522556f","townName":"PENCO - LIRQUEN","districtName":"PENCO"}
+{"shipmentId":"27321d26-933c-4a6a-8897-6b9fbb00cb06","townName":"DIEGO DE ALMAGRO - EL SALVADOR","districtName":"DIEGO DE ALMAGRO"}
+{"shipmentId":"20c01de7-d901-42bd-a6d7-2eeee79a469e","townName":null,"districtName":"PEÑALOLÉN"}
+{"shipmentId":"290e455f-4598-4d80-82fc-5f0fe1d56f1c","townName":"ALGARROBO - ALGARROBO","districtName":"ALGARROBO"}
+{"shipmentId":"613b8659-4a4c-4d59-9b42-2c85b34db571","townName":"ALGARROBO - ALGARROBO","districtName":"ALGARROBO"}
+{"shipmentId":"ae629f61-65db-4640-a336-0d16cd2994f9","townName":"ALHUÉ","districtName":"ALHUÉ"}
+{"shipmentId":"a6f9fae6-8aac-4c77-ad01-95f7880f3331","townName":"ALHUÉ","districtName":"ALHUÉ"}
+{"shipmentId":"ef87a03c-21aa-49e5-87d8-1606ee50d0ea","townName":"ALHUÉ","districtName":"ALHUÉ"}
+{"shipmentId":"4f2e67c9-7425-46ca-9b42-fbc620365d10","townName":"ALHUÉ","districtName":"ALHUÉ"}
+{"shipmentId":"eac5cde8-4e85-4942-a2d2-3567060a5149","townName":"DIEGO DE ALMAGRO - EL SALVADOR","districtName":"DIEGO DE ALMAGRO"}
+{"shipmentId":"d6526624-9199-4e28-acfd-b18e37ef0cb6","townName":"QUELLÓN","districtName":"QUELLÓN"}
+{"shipmentId":"719e545b-00bc-4f4e-aeda-2dc2ecb9ede2","townName":null,"districtName":"CERRO NAVIA"}
+{"shipmentId":"e8090bfc-ee8f-484b-814c-cd4c1bdcc116","townName":"ALHUÉ","districtName":"ALHUÉ"}
+{"shipmentId":"0949cf01-9ba6-440f-8c83-de46fcbf6ace","townName":"RENAICO - MININCO","districtName":"RENAICO"}
+{"shipmentId":"52d2d481-957c-46f0-9f67-8a653f86e631","townName":"SANTA MARÍA","districtName":"SANTA MARÍA"}
+{"shipmentId":"b359a3c1-b5b7-4e74-86ad-6bbbaf7e26f9","townName":"SANTA MARÍA","districtName":"SANTA MARÍA"}
+{"shipmentId":"58600b21-e9cd-436f-a490-4b289f1adace","townName":"ALGARROBO - ALGARROBO","districtName":"ALGARROBO"}
+{"shipmentId":"69221fc6-c454-499e-ad32-ef88c05fb28e","townName":"ALTO BIOBÍO","districtName":"ALTO BIOBÍO"}
+{"shipmentId":"7ec2874f-8b45-430e-a0fb-5f5af15beaf9","townName":"ALTO BIOBÍO","districtName":"ALTO BIOBÍO"}
+{"shipmentId":"3d0ce630-a477-46a4-b5b2-cdddac397433","townName":"ALTO BIOBÍO","districtName":"ALTO BIOBÍO"}
+{"shipmentId":"0f04b618-7b18-421b-b4f4-8c2c161d5dd7","townName":"PUDAHUEL - PUDAHUEL","districtName":"PUDAHUEL"}
+{"shipmentId":"9720212e-5eae-4500-916e-8f9774c436a9","townName":"CATEMU","districtName":"CATEMU"}
+{"shipmentId":"0b319af9-7e98-4006-8167-38cd5fc28df4","townName":"RETIRO","districtName":"RETIRO"}
+{"shipmentId":"833a3b02-0753-4bcd-864b-c5dc9a25ff8c","townName":"ANCUD - ANCUD","districtName":"ANCUD"}
+{"shipmentId":"603264ae-4bc2-4717-99c7-7dac104b0fd5","townName":"ALGARROBO - ALGARROBO","districtName":"ALGARROBO"}
+{"shipmentId":"68d71923-a954-4f14-a3c2-d7ec29a12f15","townName":"ALTO BIOBÍO","districtName":"ALTO BIOBÍO"}
+{"shipmentId":"c5a9d708-4d37-4da4-b910-3f7355ff5b18","townName":"MARÍA PINTO","districtName":"MARÍA PINTO"}
+{"shipmentId":"d139d5b3-46e9-4fc5-8bf0-38aa19658ce6","townName":"ALGARROBO - ALGARROBO","districtName":"ALGARROBO"}
+{"shipmentId":"ccac3500-484b-4e68-9144-c7d4caabb646","townName":null,"districtName":"PEÑALOLÉN"}
+{"shipmentId":"4afc0c14-40d0-48ad-8320-0df1d1249a20","townName":"OLMUÉ","districtName":"OLMUÉ"}
+{"shipmentId":"64854910-645d-4afd-8d5c-473a55e109fb","townName":"SAN RAFAEL","districtName":"SAN RAFAEL"}
+{"shipmentId":"a4bb3ca5-eb9f-45a7-a1cb-69dc1b6db6e1","townName":"MOSTAZAL - MOSTAZAL","districtName":"MOSTAZAL"}
+{"shipmentId":"be8692aa-ffcc-4090-99be-15df81576668","townName":"TENO","districtName":"TENO"}
+{"shipmentId":"9244c766-6d53-46b4-b35b-1a26644baa6c","townName":"VILLA ALEMANA - VILLA ALEMANA","districtName":"VILLA ALEMANA"}
+{"shipmentId":"acafe418-15cc-4d3d-a27a-683c8f93a6ea","townName":"ALTO BIOBÍO","districtName":"ALTO BIOBÍO"}
+{"shipmentId":"869338c0-3b6e-42cc-8544-6ed245055896","townName":"SAN FELIPE","districtName":"SAN FELIPE"}
+{"shipmentId":"82312bff-ec59-4d74-ad32-85cc6cab2ba9","townName":"LOS LAGOS - ANTILHUE","districtName":"LOS LAGOS"}
+{"shipmentId":"f523ad03-3c1a-4933-8100-ec616782fb27","townName":"PUNTA ARENAS","districtName":"PUNTA ARENAS"}
+{"shipmentId":"06fc3d83-886f-498d-a896-a427aa848381","townName":"ZAPALLAR - CATAPILCO","districtName":"ZAPALLAR"}
+{"shipmentId":"2b582fe8-e8d8-4011-a9c6-49cf7071fe68","townName":null,"districtName":"ESTACIÓN CENTRAL"}
+{"shipmentId":"b5a56df4-2607-448c-a9b9-ba18ef8b2c26","townName":null,"districtName":"INDEPENDENCIA"}
+{"shipmentId":"00e0c422-e551-40bb-87e6-4e0b398a49c5","townName":null,"districtName":"INDEPENDENCIA"}
+{"shipmentId":"adfee481-a1ea-4b40-aa9e-f542722fed17","townName":"LOS ÁNGELES - SAN CARLOS DE PUREN","districtName":"LOS ÁNGELES"}
+{"shipmentId":"2b1076e9-dd29-4a63-bdbc-be27541985b4","townName":"ALTO HOSPICIO","districtName":"ALTO HOSPICIO"}
+{"shipmentId":"12c8ee8c-a4f5-4e7a-833e-4d2a6e390e6a","townName":"ALHUÉ","districtName":"ALHUÉ"}
+{"shipmentId":"2f91bad3-315f-4c20-93c2-a717f2ca412b","townName":"TENO","districtName":"TENO"}
+{"shipmentId":"43b311c9-a525-4a7a-ae1d-8d5c31dc6095","townName":"ALHUÉ","districtName":"ALHUÉ"}
+{"shipmentId":"3f8ae090-3c80-4de0-ab54-f8d180c0b5d2","townName":null,"districtName":"QUILICURA"}
+{"shipmentId":"bec6d998-be8d-45ae-859a-efad55eb3610","townName":null,"districtName":"INDEPENDENCIA"}
+{"shipmentId":"3a43c54d-99ec-49cd-b239-6d2ddeed3469","townName":"CHIGUAYANTE","districtName":"CHIGUAYANTE"}
+{"shipmentId":"449e98c8-00a6-4787-a9a1-c1c701503c12","townName":null,"districtName":"LA FLORIDA"}
+{"shipmentId":"bf11b4b0-fe22-47b3-8a7a-09f4f2a2992c","townName":"ALHUÉ","districtName":"ALHUÉ"}
+{"shipmentId":"d38649db-4527-47d9-886b-16447da72dd8","townName":"CAUQUENES - CAUQUENES","districtName":"CAUQUENES"}
+{"shipmentId":"3a66e334-17b6-49a1-b2ed-82e246539561","townName":null,"districtName":"LAS CONDES"}
+{"shipmentId":"16d0e2fe-5b54-4d28-98f7-0acc19841901","townName":null,"districtName":"PEÑALOLÉN"}
+{"shipmentId":"91388628-d129-4a24-9754-ad05355747b6","townName":"ALTO BIOBÍO","districtName":"ALTO BIOBÍO"}
+{"shipmentId":"8c1b440a-0372-40ae-bdbb-ebcdbb499fcd","townName":"COLINA - CHICUREO","districtName":"COLINA"}
+{"shipmentId":"45249864-a943-4a2c-a8d2-930a6308c648","townName":"VILLARRICA - LICAN RAY","districtName":"VILLARRICA"}
+{"shipmentId":"25a971f2-e9c9-4ca3-859f-1bc8bbe53ebd","townName":"PUMANQUE","districtName":"PUMANQUE"}
+{"shipmentId":"40316980-c79a-40ed-9892-66785aec37b9","townName":null,"districtName":"ÑUÑOA"}
+{"shipmentId":"515fe199-b996-4a96-a48c-9b46e9b1d05e","townName":"PUNTA ARENAS","districtName":"PUNTA ARENAS"}
+{"shipmentId":"b6a39ee5-698d-431f-aec1-dca0c4bbf698","townName":"EL MONTE","districtName":"EL MONTE"}
+{"shipmentId":"4035f7c2-6e36-4a2b-ae51-36f0589b5b85","townName":null,"districtName":"LA FLORIDA"}
+{"shipmentId":"d4821121-a81c-424b-8917-12f456132fbb","townName":"PUNTA ARENAS","districtName":"PUNTA ARENAS"}
+{"shipmentId":"eb0d293b-f2a6-4df4-b0b3-dc67c212a524","townName":null,"districtName":"ÑUÑOA"}
+{"shipmentId":"98fa1a5b-d2df-432f-9e57-a022eb50ccb3","townName":"ALHUÉ","districtName":"ALHUÉ"}
+{"shipmentId":"b9257758-9c09-40da-bba6-44070d598edd","townName":"CHIGUAYANTE","districtName":"CHIGUAYANTE"}
+{"shipmentId":"cb9b0ac5-05a0-4b05-a0a4-340b6c004d5f","townName":"ALHUÉ","districtName":"ALHUÉ"}
+{"shipmentId":"0ac8df75-6f2f-4502-a520-e1c8ceba5ea4","townName":null,"districtName":"RENCA"}
+{"shipmentId":"0cf2cb3b-a2d7-487d-af08-5dbc66ea1178","townName":"CHIGUAYANTE","districtName":"CHIGUAYANTE"}
+{"shipmentId":"cd7c7723-0425-4b5f-b495-3d1103c596ed","townName":null,"districtName":"MAIPÚ"}
+{"shipmentId":"3fca62f0-f7a8-4f59-9242-872dc8b3fd3a","townName":null,"districtName":"PEDRO AGUIRRE CERDA"}
+{"shipmentId":"55f5dc72-ff2a-418c-8eda-9ffa7d9836c9","townName":"HUALPÉN - HUALPÉN","districtName":"HUALPÉN"}
+{"shipmentId":"7d73c148-b59b-4dc7-89cc-874955978f78","townName":"PUDAHUEL - PUDAHUEL","districtName":"PUDAHUEL"}
+{"shipmentId":"66da0020-4e43-46e8-b628-6e30aac10789","townName":null,"districtName":"MAIPÚ"}
+{"shipmentId":"72cbe416-8b6e-4dde-acb8-f2854ed31122","townName":"LAMPA - BATUCO","districtName":"LAMPA"}
+{"shipmentId":"55dcefdd-12b8-4148-8706-d55cd8ace2a9","townName":null,"districtName":"MAIPÚ"}
+{"shipmentId":"2b1d2dfa-7b28-4acc-9d98-1d104d5a61c4","townName":null,"districtName":"MAIPÚ"}
+{"shipmentId":"c1797adb-d668-4949-b627-28886b49f2c5","townName":"PUNTA ARENAS","districtName":"PUNTA ARENAS"}
+{"shipmentId":"1e4c9b71-aefe-4998-9dca-4c12924c3951","townName":null,"districtName":"MAIPÚ"}
+{"shipmentId":"d8449392-76ff-41b7-a647-fe1928350e50","townName":null,"districtName":"MAIPÚ"}
+{"shipmentId":"6cde8b1d-3819-4a40-aa35-f4dcd6831341","townName":null,"districtName":"PEÑALOLÉN"}
+{"shipmentId":"a2df6d01-e811-40ab-941f-0b8935b9fcde","townName":null,"districtName":"MAIPÚ"}
+{"shipmentId":"d585aa10-7cc8-4510-ad61-eec5d5f68f35","townName":null,"districtName":"LA FLORIDA"}
+{"shipmentId":"dadc7ba2-9094-4e36-bac0-f2ceaad579b3","townName":null,"districtName":"MAIPÚ"}
+{"shipmentId":"8537533d-e3dd-4de2-997c-04389687a981","townName":"CHILLÁN - QUINCHAMALÍ","districtName":"CHILLÁN"}
+{"shipmentId":"65dcefd9-4ee6-41d8-8731-27653512f998","townName":null,"districtName":"PEÑALOLÉN"}
+{"shipmentId":"b180c8dd-75f1-4891-9c5e-341dfac66859","townName":null,"districtName":"PEÑALOLÉN"}
+{"shipmentId":"5d1730a6-9119-4214-8859-02b808f57c39","townName":null,"districtName":"RENCA"}
+{"shipmentId":"2e475fde-4be1-4a91-bd5d-3bd88adf310a","townName":null,"districtName":"MAIPÚ"}
+{"shipmentId":"c95deb99-7d48-4372-80d5-e4798d2abbe5","townName":null,"districtName":"MAIPÚ"}
+{"shipmentId":"0cbed80f-e861-4491-8709-c583cc1bf7d6","townName":null,"districtName":"MACUL"}
+{"shipmentId":"5dcee817-0e89-4da8-9237-125a38663762","townName":null,"districtName":"ESTACIÓN CENTRAL"}
+{"shipmentId":"de3bb907-93ee-439f-bcea-d30d570f6387","townName":null,"districtName":"EL BOSQUE"}
+{"shipmentId":"d8e1c67a-3ba1-4f20-aa52-b3210cf9ac12","townName":"RANCAGUA","districtName":"RANCAGUA"}
+{"shipmentId":"40ec69ff-a9f2-4b43-8479-3f7aadb5bee4","townName":"PADRE LAS CASAS - SAN RAMÓN","districtName":"PADRE LAS CASAS"}
+{"shipmentId":"2ba5da19-e6d7-48c1-9be4-ddac9727a68e","townName":"CHÉPICA","districtName":"CHÉPICA"}
+{"shipmentId":"3021bf57-8334-439d-a386-adf8990252c6","townName":"TEMUCO - LABRANZA","districtName":"TEMUCO"}
+{"shipmentId":"396702fe-1392-43c0-8b95-64543bff8d40","townName":null,"districtName":"LA GRANJA"}
+{"shipmentId":"7e0d60d5-62e5-43b6-b3eb-067598308837","townName":null,"districtName":"LAS CONDES"}
+{"shipmentId":"1110bc95-6bff-4882-9aef-126931f7d444","townName":null,"districtName":"PEÑALOLÉN"}
+{"shipmentId":"e7ff5084-4e07-42cb-af19-556938f13774","townName":"SAAVEDRA","districtName":"SAAVEDRA"}
+{"shipmentId":"c20ae9b3-0321-4440-8509-0ab56b35e183","townName":"SAAVEDRA","districtName":"SAAVEDRA"}
+{"shipmentId":"72d790c1-2e00-4341-ada9-1f41a1611781","townName":"SAAVEDRA","districtName":"SAAVEDRA"}
+{"shipmentId":"0e204443-e647-4471-afc4-513ff14082d2","townName":"NANCAGUA","districtName":"NANCAGUA"}
+{"shipmentId":"6b18dc2b-0e48-4bb9-bcff-93dd70d5be06","townName":"MAULE","districtName":"MAULE"}
+{"shipmentId":"01da602b-c95b-41ef-abfa-4d04d0ba2aaa","townName":"CATEMU","districtName":"CATEMU"}
+{"shipmentId":"ef025b1e-3485-4bbb-a828-795e70956d90","townName":"CATEMU","districtName":"CATEMU"}
+{"shipmentId":"5de6efd7-001a-49ef-a51b-8b9dc72c9c05","townName":"CARTAGENA","districtName":"CARTAGENA"}
+{"shipmentId":"b118ad3d-d5dc-434f-b62c-1d7035c912a2","townName":"CATEMU","districtName":"CATEMU"}
+{"shipmentId":"f85ce067-cc6d-477a-a630-21022442ff14","townName":"ALGARROBO - ALGARROBO","districtName":"ALGARROBO"}
+{"shipmentId":"7147fe10-3198-4b7c-a7d6-451fb41e0ef6","townName":"CAUQUENES - CAUQUENES","districtName":"CAUQUENES"}
+{"shipmentId":"61f5cd54-fa68-425b-86ce-2db4cd1c53ed","townName":"VILLARRICA - LICAN RAY","districtName":"VILLARRICA"}
+{"shipmentId":"88803164-2ea7-4bdf-8991-779b5d5f6117","townName":null,"districtName":"LAS CONDES"}
+{"shipmentId":"5fe4d6df-17c2-4c28-9490-ebdce91c3909","townName":"ALHUÉ","districtName":"ALHUÉ"}
+{"shipmentId":"10248dbf-965f-4f8f-b80a-95ee5e3e24e7","townName":"LOTA - LOTA","districtName":"LOTA"}
+{"shipmentId":"f882462c-e80a-4a94-a9e3-e5dee71c2a03","townName":null,"districtName":"PEDRO AGUIRRE CERDA"}
+{"shipmentId":"954fd920-4406-4068-bfcf-024d7d3b00a1","townName":"LOTA - LOTA","districtName":"LOTA"}
+{"shipmentId":"ef474b74-de8d-436b-8d30-e48a69d59121","townName":null,"districtName":"LA PINTANA"}
+{"shipmentId":"f812baeb-5c05-4391-b4dc-78529635322a","townName":"ALTO HOSPICIO","districtName":"ALTO HOSPICIO"}
+{"shipmentId":"0503e4e5-9264-4151-8af6-aabb6e951681","townName":"SAN PEDRO","districtName":"SAN PEDRO"}
+{"shipmentId":"fc4b8a3e-d84c-4bbf-b6f1-bf1ceef9e109","townName":"ALTO BIOBÍO","districtName":"ALTO BIOBÍO"}
+{"shipmentId":"887c1f91-eba9-4294-9687-86fa4416415e","townName":"ALHUÉ","districtName":"ALHUÉ"}
+{"shipmentId":"52f343b1-7d74-4817-8916-f65aaa956ba2","townName":null,"districtName":"CERRILLOS"}
+{"shipmentId":"6a33ab29-1165-4415-8a80-b9b99b9cac47","townName":"ALTO BIOBÍO","districtName":"ALTO BIOBÍO"}
+{"shipmentId":"87f4e669-922e-4191-817e-13bd5d0c4e1b","townName":"TOMÉ - PUNTA DE PARRA","districtName":"TOMÉ"}
+{"shipmentId":"8d41a723-3933-46f6-9694-5b56fe88a2a8","townName":null,"districtName":"SAN MIGUEL"}
+{"shipmentId":"fbae8719-2e6e-4099-a36a-ef98e938fdc7","townName":null,"districtName":"RENCA"}
+{"shipmentId":"a5092d65-f184-46a7-8896-c7bbeced7d4a","townName":null,"districtName":"ÑUÑOA"}
+{"shipmentId":"4dec94d4-1045-4aa5-aa8d-8fc88e65b70f","townName":"ALTO BIOBÍO","districtName":"ALTO BIOBÍO"}
+{"shipmentId":"7287d618-fb86-4e36-aff0-2bd9e11235b3","townName":null,"districtName":"QUINTA NORMAL"}
+{"shipmentId":"4aa87e82-f203-4e39-8e86-a6e02c82b26e","townName":null,"districtName":"MAIPÚ"}
+{"shipmentId":"035b6a9a-4ce5-4aab-8e87-8df256e1d6d7","townName":null,"districtName":"ÑUÑOA"}
+{"shipmentId":"c90699da-3d71-4d5b-81cb-5dff4372b9ed","townName":null,"districtName":"LA PINTANA"}
+{"shipmentId":"e96d4023-ea76-424f-9230-c6fe538f1ad1","townName":null,"districtName":"LA PINTANA"}
+{"shipmentId":"a6971609-60a7-40a3-8703-41e2a1ddb85d","townName":"MARÍA PINTO","districtName":"MARÍA PINTO"}
+{"shipmentId":"ce214de4-b427-432b-bda5-d6f8f94c6dcb","townName":null,"districtName":"PEÑALOLÉN"}
+{"shipmentId":"d789d5f0-0f5e-43a4-918e-b3ef0acc19df","townName":"PUERTO OCTAY","districtName":"PUERTO OCTAY"}
+{"shipmentId":"b6d810df-4da3-4331-a047-686945d7b377","townName":null,"districtName":"PROVIDENCIA"}
+{"shipmentId":"0ee59e49-a3d8-4e9f-80d1-27c0235f0381","townName":null,"districtName":"MAIPÚ"}
+{"shipmentId":"94ff7d2d-93c3-406f-9b4a-c8304440f6b2","townName":null,"districtName":"MAIPÚ"}
+{"shipmentId":"4f7e7429-28da-46ed-a55a-a3acc42ea4f0","townName":null,"districtName":"LAS CONDES"}
+{"shipmentId":"358d0939-3328-4981-879e-09f6b1665177","townName":null,"districtName":"LO ESPEJO"}
+{"shipmentId":"a0d645d8-5a5d-435b-a08a-7204278556ba","townName":"PUDAHUEL - PUDAHUEL","districtName":"PUDAHUEL"}
+{"shipmentId":"7f1e369c-2375-4c57-b101-1c4a82627c7f","townName":null,"districtName":"RECOLETA"}
+{"shipmentId":"bb8b96cb-cde0-42e8-8e3b-15c3227c2ba5","townName":"LA SERENA - LA SERENA","districtName":"LA SERENA"}
+{"shipmentId":"7f8901e8-7c6f-4637-b7ee-413dd9319b12","townName":"CURACAVÍ","districtName":"CURACAVÍ"}
+{"shipmentId":"44fe053e-92cf-498f-8b25-c6a3c0c34aae","townName":null,"districtName":"LA FLORIDA"}
+{"shipmentId":"e11e7462-13b3-4a2f-bb54-c98808f5db98","townName":"ALGARROBO - ALGARROBO","districtName":"ALGARROBO"}
+{"shipmentId":"3407e33e-5a0d-40e5-821b-d6a3ec8edd87","townName":"CHÉPICA","districtName":"CHÉPICA"}
+{"shipmentId":"56a26bd5-46a7-465b-acc7-0c81cf97b474","townName":"LONCOCHE","districtName":"LONCOCHE"}
+{"shipmentId":"343aaaaf-5cc8-472f-8a13-38d67229aa77","townName":"ALHUÉ","districtName":"ALHUÉ"}
+{"shipmentId":"37abec13-67c3-4e56-9be9-63a1d8dd9662","townName":"ALHUÉ","districtName":"ALHUÉ"}
+{"shipmentId":"86ce39e5-9574-4c87-9634-0a1bbf301212","townName":"ALTO BIOBÍO","districtName":"ALTO BIOBÍO"}
+{"shipmentId":"7f804252-5729-4a88-8493-238ad4e71911","townName":"ALTO BIOBÍO","districtName":"ALTO BIOBÍO"}
+{"shipmentId":"29709dec-f039-403b-b58d-85f2571d4681","townName":null,"districtName":"LA FLORIDA"}
+{"shipmentId":"780e1453-8aeb-479d-b9fb-c76e01893bad","townName":"ALTO BIOBÍO","districtName":"ALTO BIOBÍO"}
+{"shipmentId":"9423ca51-fae6-40bc-a051-136e975ca40f","townName":null,"districtName":"ESTACIÓN CENTRAL"}
+{"shipmentId":"ecee2759-716a-4973-96b7-e512f9f37157","townName":null,"districtName":"QUILICURA"}
+{"shipmentId":"cc19279b-3611-44b2-92e3-0c168463151c","townName":"PUNTA ARENAS","districtName":"PUNTA ARENAS"}
+{"shipmentId":"a0c27a5e-74f6-4992-9852-c05324c4119e","townName":"ANCUD - ANCUD","districtName":"ANCUD"}
+{"shipmentId":"6b3c3ec0-a4e9-4084-88ed-789ad3b4d0d3","townName":null,"districtName":"MAIPÚ"}
+{"shipmentId":"abb8779a-5d1c-4aa2-a092-eab018fbbf75","townName":"CURARREHUE","districtName":"CURARREHUE"}
+{"shipmentId":"d2fdc574-49a2-470e-a932-4868b05dc0cb","townName":"TEMUCO - CAJÓN","districtName":"TEMUCO"}
+{"shipmentId":"ac0e8578-fe99-4bd3-99e8-5d27333526d8","townName":null,"districtName":"EL BOSQUE"}
+{"shipmentId":"fd088675-4da6-4ef4-a9a1-4acc828151d6","townName":null,"districtName":"ÑUÑOA"}
+{"shipmentId":"de58178c-990f-4937-a1d6-c76480ec1ade","townName":"MARÍA PINTO","districtName":"MARÍA PINTO"}
+{"shipmentId":"312459d6-1c50-423e-9a33-a35944fea20d","townName":null,"districtName":"SAN MIGUEL"}
+{"shipmentId":"9add3436-8e40-4c71-accd-bf8b3e78dd0d","townName":null,"districtName":"ÑUÑOA"}
+{"shipmentId":"c3961746-1583-40e9-8639-bce0cc7f4215","townName":null,"districtName":"LA CISTERNA"}
+{"shipmentId":"cede75f3-5f23-4288-8cda-b3451bfc799a","townName":null,"districtName":"PEÑALOLÉN"}
+{"shipmentId":"accbb08e-f0a3-4b2b-8e01-d5f96d319259","townName":null,"districtName":"PEÑALOLÉN"}
+{"shipmentId":"f15d906e-70cb-4888-afa4-7d1647fe2fe5","townName":"SAN PEDRO DE LA PAZ","districtName":"SAN PEDRO DE LA PAZ"}
+{"shipmentId":"3fd7d62a-7ad9-4864-aa75-fb9d4fde074d","townName":null,"districtName":"QUILICURA"}
+{"shipmentId":"026325af-70bd-464a-a568-57aae962a97f","townName":null,"districtName":"QUILICURA"}
+{"shipmentId":"eba4349a-53b7-4cbb-9cb3-638e407ead15","townName":"ANCUD - ANCUD","districtName":"ANCUD"}
+{"shipmentId":"edc70ad9-838c-4b42-a538-52b1bfe94645","townName":"ALTO BIOBÍO","districtName":"ALTO BIOBÍO"}
+{"shipmentId":"b135e399-0eb0-4525-bf3d-12d6bd7d0b6e","townName":null,"districtName":"VITACURA"}
+{"shipmentId":"d2b8ffb1-a4c2-4dd1-9856-73d4e8b0175c","townName":null,"districtName":"QUINTA NORMAL"}
+{"shipmentId":"951c197e-4d11-4312-bc01-62ee3f0cc302","townName":"CHÉPICA","districtName":"CHÉPICA"}
+{"shipmentId":"c2ff930e-fc73-4ae9-89d8-c610ff3f7cd7","townName":null,"districtName":"QUILICURA"}
+{"shipmentId":"b07d0f2d-59cc-403f-b77e-ee8fc00bb3b4","townName":"CAUQUENES - CAUQUENES","districtName":"CAUQUENES"}
+{"shipmentId":"ca870415-b911-4b77-b803-dcd5dcca15e5","townName":"PUMANQUE","districtName":"PUMANQUE"}
+{"shipmentId":"89b266dc-7c8e-4a5c-9f15-3d500b3a126c","townName":"ALTO BIOBÍO","districtName":"ALTO BIOBÍO"}
+{"shipmentId":"04c93423-9122-4308-b539-8a6a4780acc9","townName":null,"districtName":"QUILICURA"}
+{"shipmentId":"cd5277ee-655a-4561-89f8-7a3576c868f1","townName":null,"districtName":"PEÑALOLÉN"}
+{"shipmentId":"cf805793-6326-4be1-90da-dec8c165f712","townName":"ALTO BIOBÍO","districtName":"ALTO BIOBÍO"}
+{"shipmentId":"695dd4b5-99c7-485d-8e00-90f270e9311d","townName":null,"districtName":"ÑUÑOA"}
+{"shipmentId":"fb3b8177-b6b6-4e65-9570-cec33e97080d","townName":"MARCHIHUE","districtName":"MARCHIHUE"}
+{"shipmentId":"b25dba48-419d-466e-beb3-f0fa158b84c8","townName":"CURACAVÍ","districtName":"CURACAVÍ"}
+{"shipmentId":"49d14d3b-2116-43ee-9196-96e3998db109","townName":"LONGAVÍ","districtName":"LONGAVÍ"}
+{"shipmentId":"20c3b91d-c55b-4015-a943-7394b65e60e9","townName":null,"districtName":"MAIPÚ"}
+{"shipmentId":"fec20dfa-89af-4085-90db-5f2d8d3371fb","townName":"SAN FELIPE","districtName":"SAN FELIPE"}
+{"shipmentId":"d4cc20c3-0813-4b74-bd08-26ba59caa9ce","townName":null,"districtName":"PUENTE ALTO"}
+{"shipmentId":"54dfd9a6-2a02-438a-9b14-7366766f42d0","townName":null,"districtName":"QUINTA NORMAL"}
+{"shipmentId":"e5fc4afe-ed46-436e-a0b4-a8996d118945","townName":null,"districtName":"RECOLETA"}
+{"shipmentId":"4e07b79b-bf81-4aba-878b-f1b91a37d31d","townName":null,"districtName":"QUINTA NORMAL"}
+{"shipmentId":"72d27187-2b82-4de7-9b0d-f5910ffbfc2b","townName":null,"districtName":"QUINTA NORMAL"}
+{"shipmentId":"f358bd15-9607-41d2-8761-2f67cf559994","townName":null,"districtName":"PROVIDENCIA"}
+{"shipmentId":"53b72817-b0fa-4d80-a818-265769c4bc4b","townName":"VICTORIA","districtName":"VICTORIA"}
+{"shipmentId":"790edddc-f488-43f1-ae18-eee31008586c","townName":null,"districtName":"QUINTERO"}
+{"shipmentId":"d07652dc-7c20-4ce1-bd5e-3868dca9e463","townName":null,"districtName":"SAN MIGUEL"}
+{"shipmentId":"10cd6c4d-56d6-4f68-987c-de0474c7d24b","townName":null,"districtName":"CERRILLOS"}
+{"shipmentId":"26a8374d-02e4-4268-abc6-c7cc166a32de","townName":null,"districtName":"PUENTE ALTO"}
+{"shipmentId":"c1b49ae0-4d9c-4db4-8060-d448a4bcb23a","townName":null,"districtName":"LA GRANJA"}
+{"shipmentId":"15ccdd50-cb5d-43f3-adb7-3139e2807ad8","townName":null,"districtName":"SANTIAGO"}
+{"shipmentId":"35b7ca95-2ce0-41ce-a7ac-0255f3fb6ed4","townName":"ALHUÉ","districtName":"ALHUÉ"}
+{"shipmentId":"f5529185-d607-4a2b-b6ce-b4854ddb82f7","townName":"CHOLCHOL","districtName":"CHOLCHOL"}
+{"shipmentId":"45e45535-f37a-413c-a6f6-25fd5641f8c4","townName":"MONTE PATRIA","districtName":"MONTE PATRIA"}
+{"shipmentId":"88b88249-7d4d-4d16-91ff-65959939cb4e","townName":"ALGARROBO - ALGARROBO","districtName":"ALGARROBO"}
+{"shipmentId":"f6cbd63a-87ac-447d-8a05-f467219145ec","townName":null,"districtName":"MAIPÚ"}
+{"shipmentId":"7ef509ca-1986-473c-a3b1-3bab733b80bf","townName":"CURACAVÍ","districtName":"CURACAVÍ"}
+{"shipmentId":"c046b66c-8d24-40cc-ac85-1acd24494d93","townName":"PUDAHUEL - PUDAHUEL","districtName":"PUDAHUEL"}
+{"shipmentId":"4b222b06-03b0-42b6-912f-44cd76d7a153","townName":"SAN PEDRO DE LA PAZ","districtName":"SAN PEDRO DE LA PAZ"}
+{"shipmentId":"08396ac6-6c10-447a-8c51-13cc3e56e026","townName":null,"districtName":"PEÑALOLÉN"}
+{"shipmentId":"c01ec4f8-25c0-464b-8dbd-ef6ebd63b139","townName":null,"districtName":"EL BOSQUE"}
+{"shipmentId":"36d11210-6261-4eb9-bc76-3e5f95351ce3","townName":"ALHUÉ","districtName":"ALHUÉ"}
+{"shipmentId":"26627e14-a0bb-476a-9768-961631149d93","townName":"COQUIMBO - TONGOY","districtName":"COQUIMBO"}
+{"shipmentId":"10a9c8fc-3f44-4da9-b054-f0435d2b161d","townName":null,"districtName":"MACUL"}
+{"shipmentId":"e8c5f86d-9fb2-47f7-b097-d6ab3d78f627","townName":null,"districtName":"SAN JOSÉ DE MAIPO"}
+{"shipmentId":"d1e1e97a-263c-4b63-aa95-d11ccbce7ea1","townName":null,"districtName":"PUENTE ALTO"}
+{"shipmentId":"ac50e466-4c2f-4326-998d-5544547bd4d9","townName":null,"districtName":"ÑUÑOA"}
+{"shipmentId":"a1d6e798-3d67-4636-b7bb-d9763a0587cd","townName":"PUNTA ARENAS","districtName":"PUNTA ARENAS"}
+{"shipmentId":"ed072f14-4a31-48b2-9fe7-9d4474427931","townName":null,"districtName":"LO ESPEJO"}
+{"shipmentId":"41fd4325-5242-4e0f-845f-e5e7f8f0efd8","townName":"MOSTAZAL - MOSTAZAL","districtName":"MOSTAZAL"}
+{"shipmentId":"d47796c6-ccb1-411c-9270-d801d94731fa","townName":"VALPARAÍSO - RODELILLO","districtName":"VALPARAÍSO"}
+{"shipmentId":"5891e2e3-42a3-4a4d-8362-dd1408720371","townName":"SANTA MARÍA","districtName":"SANTA MARÍA"}
+{"shipmentId":"b525e558-1b6e-4d89-b008-95a3519afdd5","townName":"ALTO BIOBÍO","districtName":"ALTO BIOBÍO"}
+{"shipmentId":"1225d7d9-b351-4517-8e99-f50aeb68f59e","townName":"ALTO BIOBÍO","districtName":"ALTO BIOBÍO"}
+{"shipmentId":"6c038f22-d0a5-43ec-b22d-bd0efbec9536","townName":null,"districtName":"MAIPÚ"}
+{"shipmentId":"329c7246-fe13-4d71-b0fa-1867b9bcac15","townName":null,"districtName":"MACUL"}
+{"shipmentId":"8dae0ab1-d133-4e2b-8839-7125a6496019","townName":null,"districtName":"MACUL"}
+{"shipmentId":"44b0590e-7503-4342-a65c-476e5476f20c","townName":null,"districtName":"MACUL"}
+{"shipmentId":"fde00936-af7c-4bb2-a66e-6ca1fa648e30","townName":"CHÉPICA","districtName":"CHÉPICA"}
+{"shipmentId":"e5c97e0d-7727-45be-a450-858e6dacb737","townName":"CAUQUENES - CAUQUENES","districtName":"CAUQUENES"}
+{"shipmentId":"04851246-7fee-4470-a4e1-560d64cf4b19","townName":"RANCAGUA","districtName":"RANCAGUA"}
+{"shipmentId":"5ce1d665-47ad-4797-af16-3fd8a3fb4f01","townName":"CAUQUENES - CAUQUENES","districtName":"CAUQUENES"}
+{"shipmentId":"4e3ba038-0cf1-4993-81bd-7b45e2c005b8","townName":"CORONEL","districtName":"CORONEL"}
+{"shipmentId":"4d76c706-8c06-4e1c-9795-d3e13a69b7b5","townName":"MARCHIHUE","districtName":"MARCHIHUE"}
+{"shipmentId":"4eed1461-f924-4725-96d9-516ff274d34e","townName":null,"districtName":"SAN MIGUEL"}
+{"shipmentId":"a7dfe4cd-aa8b-48a8-a126-492d7e837c20","townName":null,"districtName":"PUENTE ALTO"}
+{"shipmentId":"34fcb678-e350-4759-9498-9463add5d328","townName":"MARÍA PINTO","districtName":"MARÍA PINTO"}
+{"shipmentId":"5f0bb439-a5af-4f41-8808-61c3668c9625","townName":"ALTO BIOBÍO","districtName":"ALTO BIOBÍO"}
+{"shipmentId":"fb39a232-a271-4d1c-a614-feeb75b87b87","townName":"ALTO BIOBÍO","districtName":"ALTO BIOBÍO"}
+{"shipmentId":"facf1610-110d-4eff-b7b8-5ef5ab76b246","townName":"MARÍA PINTO","districtName":"MARÍA PINTO"}
+{"shipmentId":"29fa435c-a04d-48ef-b314-049400d3f94e","townName":"ANCUD - ANCUD","districtName":"ANCUD"}
+{"shipmentId":"3cd39778-33b8-4592-bf53-e367ec3dd5b0","townName":"COMBARBALÁ","districtName":"COMBARBALÁ"}
+{"shipmentId":"21cec442-5d17-4ccd-8a72-94f206cedc7b","townName":null,"districtName":"RECOLETA"}
+{"shipmentId":"790e3aa5-a7b7-40a3-a2ca-1a92c9a446e7","townName":"PUNTA ARENAS","districtName":"PUNTA ARENAS"}
+{"shipmentId":"015b36cf-8c2f-422f-b030-7ca1f282b95c","townName":null,"districtName":"CERRILLOS"}
+{"shipmentId":"6d47be34-37a2-48b8-a5cd-c6774073a1d2","townName":null,"districtName":"CERRILLOS"}
+{"shipmentId":"d8cfb7d9-416a-4d59-989a-6ec5d0532da8","townName":null,"districtName":"LAS CONDES"}
+{"shipmentId":"c591fca5-19c7-41ce-be2a-323c50496b6d","townName":"PUNTA ARENAS","districtName":"PUNTA ARENAS"}
+{"shipmentId":"6e1b2c55-8429-4e41-b850-24030c323050","townName":"PUNTA ARENAS","districtName":"PUNTA ARENAS"}
+{"shipmentId":"da149a11-f3fb-4555-9fb4-cd16a7349471","townName":"PUERTO MONTT - PUERTO MONTT","districtName":"PUERTO MONTT"}
+{"shipmentId":"4961d744-7720-46e1-8260-6530dbf38f5a","townName":null,"districtName":"QUILICURA"}
+{"shipmentId":"435be4a9-3a60-4a92-8d14-63f998654d12","townName":null,"districtName":"PORVENIR"}
+{"shipmentId":"77efceef-07cb-4b4f-8a5d-170c382f0d1f","townName":"PUNTA ARENAS","districtName":"PUNTA ARENAS"}
+{"shipmentId":"c1e769d8-ab91-4e55-8160-d5df5d69b36d","townName":"PUNTA ARENAS","districtName":"PUNTA ARENAS"}
+{"shipmentId":"01bb1f00-798d-49ca-8594-359f3083ceb1","townName":"PUNTA ARENAS","districtName":"PUNTA ARENAS"}
+{"shipmentId":"0a9b1066-0241-4a6f-9e34-5fa1cbf5d350","townName":"VILCÚN - CHEQUENCO","districtName":"VILCÚN"}
+{"shipmentId":"3ae9bead-9fcb-4e8f-989d-5aefd45b1446","townName":"CUNCO","districtName":"CUNCO"}
+{"shipmentId":"80f55d85-dbf0-463b-9708-b95cce093485","townName":null,"districtName":"PEDRO AGUIRRE CERDA"}
+{"shipmentId":"a11aeee5-a434-461d-8122-bfb2ff7cb9e9","townName":null,"districtName":"LA REINA"}
+{"shipmentId":"47b8d3fc-ee4f-4e04-860c-896d71923f93","townName":"EL MONTE","districtName":"EL MONTE"}
+{"shipmentId":"7385f457-1c4a-44b3-b808-176ebddd9c24","townName":"SAN PEDRO DE ATACAMA - TOCONAO","districtName":"SAN PEDRO DE ATACAMA"}
+{"shipmentId":"c89a792b-b0c0-4dda-a5a0-d67a490aca3e","townName":"ANDACOLLO","districtName":"ANDACOLLO"}
+{"shipmentId":"09cc1372-824d-4e4b-ae89-fb60edc237eb","townName":null,"districtName":"EL BOSQUE"}
+{"shipmentId":"26162891-8df8-40f5-9462-cd44d9b70662","townName":"PUMANQUE","districtName":"PUMANQUE"}
+{"shipmentId":"189918e7-48a4-455b-8500-d064b5a36199","townName":"CASTRO","districtName":"CASTRO"}
+{"shipmentId":"24495e2b-d056-445d-a010-b5bcd8fa0134","townName":"MEJILLONES","districtName":"MEJILLONES"}
+{"shipmentId":"c3c9c90d-8d58-4f54-8f0b-b7dbf54e8885","townName":"ALTO BIOBÍO","districtName":"ALTO BIOBÍO"}
+{"shipmentId":"53a8b6c1-d412-4297-8715-f3a9208d09c1","townName":null,"districtName":"SANTIAGO"}
+{"shipmentId":"beb3fec8-2116-4156-9c3a-e0449714c671","townName":null,"districtName":"RECOLETA"}
+{"shipmentId":"824c8793-eac3-4ff7-8ad2-48cdcfc37d20","townName":null,"districtName":"LO ESPEJO"}
+{"shipmentId":"f3536396-e888-441a-8197-6d43cd6d3c39","townName":"ALHUÉ","districtName":"ALHUÉ"}
+{"shipmentId":"05a15dd1-131f-4438-b709-5ab4c28cd8a8","townName":null,"districtName":"PROVIDENCIA"}
+{"shipmentId":"751a2da3-19af-44c9-a164-b118352e0732","townName":null,"districtName":"SAN MIGUEL"}
+{"shipmentId":"f831e70f-48b4-47db-9094-9b8a097f3521","townName":null,"districtName":"MACUL"}
+{"shipmentId":"71587bb7-cb12-491c-a679-38d81c488cba","townName":"CHIGUAYANTE","districtName":"CHIGUAYANTE"}
+{"shipmentId":"4eaad110-e4b4-491a-94da-68308588aae1","townName":null,"districtName":"RECOLETA"}
+{"shipmentId":"01fb2724-67f3-4a46-97c7-7e18b26deb93","townName":null,"districtName":"PUENTE ALTO"}
+{"shipmentId":"f1056b54-c692-493b-82ad-85def241e358","townName":null,"districtName":"PUENTE ALTO"}
+{"shipmentId":"2f2c9bca-2aeb-43d5-badd-fb2ff0582517","townName":"QUILPUÉ - EL BELLOTO","districtName":"QUILPUÉ"}
+{"shipmentId":"2b3c5295-eb39-4b32-b8ef-2f2ccd0f15c0","townName":null,"districtName":"RENCA"}

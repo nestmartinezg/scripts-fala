@@ -1,10 +1,10 @@
-import { readFromCSV, savePDF } from "./utils/files.js";
-import { runConcurrent } from "./utils/concurrency.js";
-import { generateLabel } from "./utils/api.js";
-import { countryFromCurrency } from "./utils/utils.js";
-import { getShipmentById } from "./utils/api.js";
-import { logFailure } from "./utils/utils.js";
-import { getDnNodeInfo } from "./utils/dnClient.js";
+import { readFromCSV, savePDF } from "../utils/files.js";
+import { runConcurrent } from "../utils/concurrency.js";
+import { generateLabel } from "../utils/api.js";
+import { countryFromCurrency } from "../utils/utils.js";
+import { getShipmentById } from "../utils/api.js";
+import { logFailure } from "../utils/utils.js";
+import { getDnNodeInfo } from "../utils/dnClient.js";
 import fs from "fs";
 
 async function main() {

@@ -1,11 +1,11 @@
 import fs from "fs";
 import axios from "axios";
 import readline from "readline";
-import { loadCarrierConfig } from "./utils/webhookConfig.js";
+import { loadCarrierConfig } from "../utils/webhookConfig.js";
 
 async function processLine(record) {
   const carrier = record.carrier;
-  const adapter = await import(`./adapters/${carrier.toLowerCase()}.js`);
+  const adapter = await import(`../adapters/${carrier.toLowerCase()}.js`);
 
   const config = loadCarrierConfig(carrier);
   const body = adapter.mapToCarrierFormat(record);

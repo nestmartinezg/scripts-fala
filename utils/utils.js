@@ -20,3 +20,9 @@ export function logFailure(entry) {
     }
   });
 }
+
+export function randomDigits(length) {
+  return Math.floor(Math.random() * Math.pow(10, length))
+    .toString()
+    .padStart(length, "0");
+}

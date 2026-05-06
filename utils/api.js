@@ -5,7 +5,7 @@
  * @param {string} token - Bearer token for authentication
  * @returns {Promise<boolean>} - Returns true if the call succeeded
  */
-
+import { randomDigits } from "./utils.js";
 import { apiCall } from "./apiClient.js";
 import { config } from "../config.js";
 
@@ -21,8 +21,8 @@ export async function generateLabel(shipmentId, country) {
       },
     },
     headers: {
-      country,
-      reprocessed: true
+      "x-country": country,
+      reprocessed: true,
     },
   });
 
@@ -60,16 +60,41 @@ export async function getShipmentsFromOrder(orderId) {
   });
 
   if (!result.ok) {
-    console.error(`❌ Failed to fetch shipments for order ${orderId}`, result.error);
+    console.error(
+      `❌ Failed to fetch shipments for order ${orderId}`,
+      result.error,
+    );
     return [];
   }
 
   const shipments = result.data?.data;
 
   if (!Array.isArray(shipments)) {
-    console.error(`❌ Unexpected response format for order ${orderId}`, result.data);
+    console.error(
+      `❌ Unexpected response format for order ${orderId}`,
+      result.data,
+    );
     return [];
   }
 
   return shipments;
+}
+
+export async function create3plShipment(country, body) {
+  const url = `${config.baseUrl}/shipments`;
+
+  const result = await apiCall({
+    url,
+    method: "POST",
+    body,
+    headers: {
+      "x-tenant-id": "5f66269c-6d96-48fb-abe0-e91ae769c54c",
+    },
+  });
+
+  if (!result.ok) {
+    throw new Error(JSON.stringify(result.error, null, 2));
+  }
+
+  return result.data.data.id;
 }

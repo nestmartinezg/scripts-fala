@@ -1,0 +1,53 @@
+{
+  "envios": [
+    {
+      "idFormaPago": 3,
+      "idOficinaOrigen": 2027,
+      "idProducto": 34,
+      "nombreProducto": "Paquetería",
+      "idCliente": 820,
+      "diceContener": "Paquetería",
+      "idUltimaOficina": 2027,
+      "apiKey": "lp-C6C7B3C6",
+      "idUsuario": 5288,
+      "nombreOficinaOrigen": "Falabella FBF",
+      "usuario": "LCT9389",
+      "nombreCompletoUsuario": "Api Corporativo",
+      "complementoDirDest": "",
+      "complementoDirRem": "",
+      "idPoblacionDestino": "11001",
+      "idPoblacionOrigen": "11001",
+      "nombreUnoDestinatario": "RICARDO GREZ LARRAECHEA",
+      "direccionDestinatario": "JUAN ESTEBAN MONTERO,\n4655,\nSegundo Piso",
+      "direccionRemitente": "Avda Lo Espejo From,\n23003,\n27046",
+      "documentoDestinatario": "6410284-2",
+      "idFormaEntrega": "2",
+      "documentoRemitente": "CD2 Santiago",
+      "emailDestinatario": "rigr2005@gmail.com",
+      "emailRemitente": "cgaete@sodimac.cl",
+      "pesoMedido": "5",
+      "apellidoUnoDestinatario": "Nugroho",
+      "nombreUnoRem": "CD Lo Espejo WMS 2017",
+      "apellidoDosDestinatario": "Verdhuro",
+      "nombreDosDestinatario": "",
+      "telefonoDestinatario": "3124801067",
+      "telefonoRemitente": "3006929990",
+      "totalPiezas": 1,
+      "nombreUnoRemitente": "CD Lo Espejo WMS 2017",
+      "nombreDosRemitente": "",
+      "apellidoUnoRemitente": "",
+      "apellidoDosRemitente": "",
+      "ordenServicio": "QA-IBIS-28466644",
+      "bypassLiquidacion": true,
+      "bypassCaja": true,
+      "numeroExterno": "QA-IBIS-28466644",
+      "dinamicos": {
+        "dinamicouno": "{\"parcelId\":\"36f16f12-7e65-4577-ad2c-1c2f6a06cd4a\",\"parcelNumber\":\"PKGTEST35646\",\"alto\":\"4\",\"carrier\":\"ibis\",\"skus\":[{\"talla\":\"\",\"valor\":44390,\"unidad\":\"2\",\"skuDesc\":\"SETX30 COLGARDOR DE ROPA PLAST\",\"tallaHd\":\"\",\"codigoProducto\":\"100445950\",\"width\":\"13\",\"height\":\"12\",\"length\":\"18\",\"weight\":\"7\",\"sizeUOM\":\"cm\",\"weightUOM\":\"g\"}],\"ancho\":\"62.3\",\"largo\":\"2\",\"parte\":\"1/1\",\"SellerId\":\"CD2 Santiago\",\"tipoEnvio\":\"Home Delivery\",\"codigoProducto\":\"100445950;\",\"promesaEntrega\":\"2023-05-15\",\"tipoId\":\"Pick Up\",\"promesaDespacho\":\"2023-01-28T08:30:00.000Z\",\"latitudRemitente\":\"1\",\"longitudRemitente\":\"1\",\"latitudDestinatario\":\"1\",\"longitudDestinatario\":\"1\",\"Valor\":4980.3223,\"deliveryPromiseFrom\":\"2023-05-12T20:17:46.384Z\",\"deliveryPromiseTo\":\"2023-05-15T12:16:41.384Z\"}"
+      },
+      "clave": "800103117609260025",
+      "numero": "800103117609260026",
+      "valorDeclarado": 4980.3223
+    }
+  ],
+  "total": 1
+}

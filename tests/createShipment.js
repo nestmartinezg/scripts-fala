@@ -1,7 +1,10 @@
-import { modifiers } from "./modifiers/modifiers.js";
+import { modifiers } from "./modifiers/shipmentModifiers.js";
 import { randomDigits } from "../utils/utils.js";
 import { baseShipment } from "./templates/baseShipment.js";
 import { create3plShipment, generateLabel } from "../utils/api.js";
+import { savePDF } from "../utils/files.js";
+import { waitForLogs, extractShippingSchema } from "../utils/k8logs.js";
+import fs from "fs";
 
 export async function modify3plShipment(
   shipmentType = "FORWARD",
@@ -12,13 +15,11 @@ export async function modify3plShipment(
   let body = structuredClone(baseShipment);
 
   const testId = `PKGTEST${randomDigits(5)}`;
-  body.data.orderNumber = randomDigits(6);
+  const testOrder = `QA-IBIS-${randomDigits(8)}`;
+  body.data.orderNumber = testOrder;
   body.data.parcels[0].number = testId;
   console.log(`🔎 Test ID: ${testId}`);
-
-  const emailTest = `${randomDigits(5)}@test.com`;
-  body.data.shipFrom.email = emailTest;
-  console.log(`🔎 Test ID: ${emailTest}`);
+  console.log(`🔎 Test Order Number: ${testOrder}`);
 
   const carrierRules = modifiers[carrierCode];
   const countryRule = carrierRules?.[country];
@@ -39,8 +40,8 @@ async function testShipments() {
     {
       shipmentType: "FORWARD",
       country: "CO",
-      carrierCode: "ibisdirecto",
-      carrierConnector: "ibisdirecto",
+      carrierCode: "ibis",
+      carrierConnector: "ibis",
     },
   ];
 
@@ -62,6 +63,25 @@ async function testShipments() {
 
       // 3. Generate label
       const label = await generateLabel(shipmentId, test.country);
+
+      savePDF(label.base64, label.tracking.number, body.data.orderNumber);
+
+      const logs = await waitForLogs(test.carrierCode, body.data.orderNumber);
+
+      if (logs) {
+        const schema = extractShippingSchema(logs);
+
+        if (schema) {
+          console.log("\n📦 Extracted inShippingSchema:\n");
+
+          fs.writeFileSync(
+            `./logs/${body.data.orderNumber}.json`,
+            JSON.stringify(schema, null, 2),
+          );
+        }
+      } else {
+        console.log("⚠️ No related logs found");
+      }
 
       if (!label) {
         console.log("⚠️ Label not generated");

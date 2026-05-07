@@ -13,4 +13,12 @@ export const modifiers = {
       return body;
     },
   },
+  servientrega: {
+    CO: (body) => {
+      body.data.shipperAccount = "7135f4b6-6700-40fa-8597-3499d9332d41";
+      body.data.shipFrom.municipalCode = "59a6aec4-fc51-4f3b-ab5e-62fd7a1076c0";
+      body.data.shipTo.municipalCode = "59a6aec4-fc51-4f3b-ab5e-62fd7a1076c0";
+      return body;
+    },
+  },
 };

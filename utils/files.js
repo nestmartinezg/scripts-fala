@@ -39,3 +39,17 @@ export function savePDF(base64, filename, orderNumber) {
 
   console.log(`📄 Saved PDF: ${filePath}`);
 }
+
+export function saveJSON(data, filename) {
+  const folder = "./output";
+
+  if (!fs.existsSync(folder)) {
+    fs.mkdirSync(folder);
+  }
+
+  const filePath = path.join(folder, `${filename}.json`);
+
+  fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf8");
+
+  console.log(`💾 Saved JSON: ${filePath}`);
+}

@@ -10,7 +10,7 @@ import { apiCall } from "./apiClient.js";
 import { config } from "../config.js";
 
 export async function generateLabel(shipmentId, country) {
-  const url = `${config.baseUrl}/shipments/${shipmentId}/labels`;
+  const url = `${config.baseUrl}/logistic-shipment/v1/shipments/${shipmentId}/labels`;
 
   const result = await apiCall({
     url,
@@ -36,7 +36,7 @@ export async function generateLabel(shipmentId, country) {
 }
 
 export async function getShipmentById(shipmentId) {
-  const url = `${config.baseUrl}/shipments/${shipmentId}`;
+  const url = `${config.baseUrl}/logistic-shipment/v1/shipments/${shipmentId}`;
 
   const result = await apiCall({
     url,
@@ -52,7 +52,7 @@ export async function getShipmentById(shipmentId) {
 }
 
 export async function getShipmentsFromOrder(orderId) {
-  const url = `${config.baseUrl}/shipments/order-number/${orderId}`;
+  const url = `${config.baseUrl}/logistic-shipment/v1/shipments/order-number/${orderId}`;
 
   const result = await apiCall({
     url,
@@ -81,7 +81,7 @@ export async function getShipmentsFromOrder(orderId) {
 }
 
 export async function create3plShipment(country, body) {
-  const url = `${config.baseUrl}/shipments`;
+  const url = `${config.baseUrl}/logistic-shipment/v1/shipments`;
 
   const result = await apiCall({
     url,
@@ -97,4 +97,69 @@ export async function create3plShipment(country, body) {
   }
 
   return result.data.data.id;
+}
+
+export async function getShipperAccountById(shipperId) {
+  const url = `${config.baseUrl}/shipper-account-service/v1/shipper-accounts/${shipperId}`;
+
+  const result = await apiCall({
+    url,
+    method: "GET",
+  });
+
+  console.log(url);
+
+  if (!result.ok) {
+    console.error(
+      `❌ Failed to fetch shipper account ${shipperId}`,
+      result.error,
+    );
+    return null;
+  }
+
+  return result.data;
+}
+
+export async function getTemplatesByShipperAccount(
+  shipperAccountId,
+  carrierCode,
+) {
+  const url = `${config.baseUrl}/shipper-account-service/v1/shipper-accounts/${shipperAccountId}/templates?carrierCode=${carrierCode}`;
+
+  const result = await apiCall({
+    url,
+    method: "GET",
+  });
+
+  console.log(url);
+
+  if (!result.ok) {
+    console.error(`❌ Failed to fetch template id ${shipperId}`, result.error);
+    return null;
+  }
+
+  return result.data;
+}
+
+export async function updateShipperAccountById(shipperId, payload) {
+  const url = `${config.baseUrl}/shipper-account-service/v1/shipper-accounts/${shipperId}`;
+
+  const result = await apiCall({
+    url,
+    method: "PATCH",
+    body: payload,
+  });
+
+  console.log(url);
+
+  if (!result.ok) {
+    console.error(
+      `❌ Failed to update shipper account ${shipperId}`,
+      result.error,
+    );
+
+    return null;
+  }
+
+  return result.data;
 }

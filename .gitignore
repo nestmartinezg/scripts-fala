@@ -1,2 +1,5 @@
 .env
 node_modules
+errors.ndjson
+estados.ndjson
+output/

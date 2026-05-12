@@ -1,4 +1,5 @@
 import { webhookModifiers } from "./modifiers/webhookModifiers.js";
+import { sendWebhook } from "../utils/api.js";
 
 async function testWebhook() {
   const testCases = [
@@ -16,11 +17,18 @@ async function testWebhook() {
 
       console.log("📦 Payload:", payload);
 
-      const response = await sendWebhook(payload);
+      const response = await sendWebhook(test.carrier, payload);
 
       console.log("✅ Response:", response);
     } catch (err) {
       console.error("❌ Error:", err.message);
+
+      if (err.response) {
+        console.error("📄 Response data:");
+        console.error(JSON.stringify(err.response.data, null, 2));
+
+        console.error("📌 Status:", err.response.status);
+      }
     }
   }
 }

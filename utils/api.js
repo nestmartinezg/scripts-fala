@@ -8,6 +8,8 @@
 import { randomDigits } from "./utils.js";
 import { apiCall } from "./apiClient.js";
 import { config } from "../config.js";
+import { loadCarrierConfig } from "./webhookConfig.js";
+import axios from "axios";
 
 export async function generateLabel(shipmentId, country) {
   const url = `${config.baseUrl}/logistic-shipment/v1/shipments/${shipmentId}/labels`;
@@ -96,7 +98,7 @@ export async function create3plShipment(country, body) {
     throw new Error(JSON.stringify(result.error, null, 2));
   }
 
-  return result.data.data.id;
+  return result.data.data;
 }
 
 export async function getShipperAccountById(shipperId) {
@@ -162,4 +164,17 @@ export async function updateShipperAccountById(shipperId, payload) {
   }
 
   return result.data;
+}
+
+export async function sendWebhook(carrierCode, payload) {
+  const config = loadCarrierConfig(carrierCode);
+
+  console.log("🌍 Endpoint:", config.endpoint);
+  console.log("📨 Sending body:", JSON.stringify(payload, null, 2));
+
+  const response = await axios.post(config.endpoint, payload, {
+    headers: config.headers,
+  });
+
+  return response.data;
 }

@@ -1,7 +1,24 @@
 import { execSync } from "child_process";
 
+const carrierNamespaces = {
+  ibis: "threepl",
+  ibisdirecto: "threepl",
+
+  directo: "threepl-cl",
+  chilexpress: "threepl-cl",
+  starken: "threepl-cl",
+
+  servientrega: "threepl-co",
+};
+
+function getNamespaceByCarrier(carrier) {
+  return carrierNamespaces[carrier] || "threepl";
+}
+
 export function getCarrierPod(carrier, namespace = "threepl") {
   try {
+    const namespace = getNamespaceByCarrier(carrier);
+
     const command = `
       kubectl get pods -n ${namespace} | grep ${carrier}
     `;
@@ -24,7 +41,7 @@ export function getCarrierPod(carrier, namespace = "threepl") {
   }
 }
 
-export function getLogs(pod, searchTerm, namespace = "threepl") {
+export function getLogs(pod, searchTerm, namespace) {
   try {
     const command = `
       kubectl logs ${pod} -n ${namespace} --since=5m \

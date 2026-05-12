@@ -1,7 +1,6 @@
 import fs from "fs";
-import axios from "axios";
 import readline from "readline";
-import { loadCarrierConfig } from "../utils/webhookConfig.js";
+import { sendWebhook } from "../utils/api.js";
 
 async function processLine(record) {
   const carrier = record.carrier;
@@ -12,7 +11,7 @@ async function processLine(record) {
 
   console.log("BODY:", JSON.stringify(body, null, 2));
 
-  await axios.post(config.endpoint, body, { headers: config.headers });
+  await sendWebhook(carrier, body);
 
   console.log(`Sent to ${carrier}: ${record.trackingNumber}`);
 }

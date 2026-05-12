@@ -1,6 +1,6 @@
 export const webhookModifiers = {
   servientrega: {
-    NumeroGuia: "2269396224",
+    NumeroGuia: "2269396651",
     FechaEnvio: "2025-11-26 11:00:00",
     NumeroTotalPiezas: "1",
     CiudadRemitente: "LA UNION",
@@ -12,7 +12,6 @@ export const webhookModifiers = {
     DireccionDestinatario: "Avenida Boyac # 142a-55 Torre E apartamento 201 ",
     IDEstadoActualEnvio: "3",
     EstadoActualEnvio: "ENTREGADO",
-    Imagen: "/9j/",
     Mov: {
       IDProcesoLogistico: 3,
       NombreProceso: "ENTR",

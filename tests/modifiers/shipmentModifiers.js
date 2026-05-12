@@ -21,4 +21,20 @@ export const modifiers = {
       return body;
     },
   },
+  directo: {
+    CL: (body) => {
+      body.data.shipperAccount = "2f428458-64a1-43d5-ae85-f6eed48dd86b";
+      body.data.shipFrom.municipalCode = "096f5a6b-9137-4cad-bfa2-88c48fb330fd";
+      body.data.shipTo.municipalCode = "096f5a6b-9137-4cad-bfa2-88c48fb330fd";
+      return body;
+    },
+  },
+  falaflex: {
+    CL: (body) => {
+      body.data.shipperAccount = "bab1e185-14dc-4865-aa64-6ed81a1d77c6";
+      body.data.shipFrom.municipalCode = "096f5a6b-9137-4cad-bfa2-88c48fb330fd";
+      body.data.shipTo.municipalCode = "096f5a6b-9137-4cad-bfa2-88c48fb330fd";
+      return body;
+    },
+  },
 };

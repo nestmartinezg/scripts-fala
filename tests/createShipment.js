@@ -15,7 +15,7 @@ export async function modify3plShipment(
   let body = structuredClone(baseShipment);
 
   const testId = `PKGTEST${randomDigits(5)}`;
-  const testOrder = `QA-IBIS-${randomDigits(8)}`;
+  const testOrder = `QA-${carrierCode}-${randomDigits(3)}`;
   body.data.orderNumber = testOrder;
   body.data.parcels[0].number = testId;
   console.log(`🔎 Test ID: ${testId}`);
@@ -40,8 +40,8 @@ async function testShipments() {
     {
       shipmentType: "FORWARD",
       country: "CO",
-      carrierCode: "ibis",
-      carrierConnector: "ibis",
+      carrierCode: "servientrega",
+      carrierConnector: "servientrega",
     },
   ];
 
@@ -58,7 +58,8 @@ async function testShipments() {
       );
 
       // 2. Create shipment
-      const shipmentId = await create3plShipment(test.country, body);
+      const shipment = await create3plShipment(test.country, body);
+      const shipmentId = shipment.id;
       console.log(`📦 Shipment created: ${shipmentId}`);
 
       // 3. Generate label

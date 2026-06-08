@@ -9,18 +9,23 @@ const carrierNamespaces = {
   starken: "threepl-cl",
 
   servientrega: "threepl-co",
+  mailamericas: "threepl-cl",
 };
 
 function getNamespaceByCarrier(carrier) {
   return carrierNamespaces[carrier] || "threepl";
 }
 
-export function getCarrierPod(carrier, namespace = "threepl") {
+function escapeShellArg(value) {
+  return `'${String(value).replace(/'/g, "'\\''")}'`;
+}
+
+export function getCarrierPod(carrier) {
   try {
     const namespace = getNamespaceByCarrier(carrier);
 
     const command = `
-      kubectl get pods -n ${namespace} | grep ${carrier}
+      kubectl get pods -n ${escapeShellArg(namespace)} | grep -F ${escapeShellArg(carrier)}
     `;
 
     const output = execSync(command, {
@@ -41,12 +46,10 @@ export function getCarrierPod(carrier, namespace = "threepl") {
   }
 }
 
-export function getLogs(pod, searchTerm, namespace) {
+export function getLogs(pod, namespace) {
   try {
     const command = `
-      kubectl logs ${pod} -n ${namespace} --since=5m \
-      | grep ${searchTerm} \
-      | grep inShippingSchema
+      kubectl logs ${escapeShellArg(pod)} -n ${escapeShellArg(namespace)} --all-containers --since=15m --tail=1000
     `;
 
     const logs = execSync(command, {
@@ -60,14 +63,52 @@ export function getLogs(pod, searchTerm, namespace) {
   }
 }
 
+function filterShippingSchemaLogs(logs, searchTerms) {
+  if (!logs) {
+    return null;
+  }
+
+  const terms = Array.isArray(searchTerms) ? searchTerms : [searchTerms];
+  const lines = logs.split("\n").filter(Boolean);
+  const matches = [];
+
+  for (const line of lines) {
+    if (!line.includes("inShippingSchema")) {
+      continue;
+    }
+
+    if (terms.some((term) => line.includes(term))) {
+      matches.push(line);
+      continue;
+    }
+
+    try {
+      const parsed = JSON.parse(line);
+      if (parsed.message !== "inShippingSchema") {
+        continue;
+      }
+
+      const text = JSON.stringify(parsed);
+      if (terms.some((term) => text.includes(term))) {
+        matches.push(line);
+      }
+    } catch (err) {
+      // ignore malformed lines
+    }
+  }
+
+  return matches.length > 0 ? matches.join("\n") : null;
+}
+
 export async function waitForLogs(
   carrier,
-  searchTerm,
+  searchTerms,
   retries = 10,
   delay = 2000,
 ) {
   for (let i = 0; i < retries; i++) {
     const pod = getCarrierPod(carrier);
+    const namespace = getNamespaceByCarrier(carrier);
 
     if (!pod) {
       console.log(`⚠️ No pod found for ${carrier}`);
@@ -79,10 +120,20 @@ export async function waitForLogs(
 
     console.log(`📡 Using pod: ${pod}`);
 
-    const logs = getLogs(pod, searchTerm);
+    const rawLogs = getLogs(pod, namespace);
+    const logs = filterShippingSchemaLogs(rawLogs, searchTerms);
 
     if (logs && logs.trim().length > 0) {
       return logs;
+    }
+
+    if (i === retries - 1 && rawLogs) {
+      console.log(
+        "⚠️ Failed to match inShippingSchema with search terms:",
+        searchTerms,
+      );
+      console.log("--- last raw logs snippet ---");
+      console.log(rawLogs.split("\n").slice(-20).join("\n"));
     }
 
     console.log(`⏳ Waiting for logs... (${i + 1}/${retries})`);
@@ -104,8 +155,18 @@ export function extractShippingSchema(logs) {
     try {
       const parsed = JSON.parse(line);
 
-      if (parsed.message === "inShippingSchema") {
+      if (parsed.message !== "inShippingSchema") {
+        continue;
+      }
+
+      // Some carriers
+      if (parsed.inShippingSchema) {
         return parsed.inShippingSchema;
+      }
+
+      // MailAmericas
+      if (parsed.config?.data) {
+        return parsed.config.data;
       }
     } catch (err) {
       // ignore malformed lines

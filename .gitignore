@@ -6,4 +6,6 @@ output/
 comments.txt
 .tokenUat.json
 .tokenProd.json
+tokenUat.json
+tokenProd.json
 labels*

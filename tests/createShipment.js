@@ -39,35 +39,81 @@ async function testShipments() {
   const testCases = [
     {
       shipmentType: "FORWARD",
-      country: "CO",
-      carrierCode: "servientrega",
-      carrierConnector: "servientrega",
+      country: "CL",
+      carrierCode: "mailamericas",
+      carrierConnector: "mailamericas",
     },
   ];
 
   for (const test of testCases) {
     console.log(`\n🚀 Testing ${test.carrierCode} - ${test.country}`);
 
-    try {
-      // 1. Build body
-      const body = await modify3plShipment(
-        test.shipmentType,
-        test.country,
-        test.carrierCode,
-        test.carrierConnector,
-      );
+    const body = await modify3plShipment(
+      test.shipmentType,
+      test.country,
+      test.carrierCode,
+      test.carrierConnector,
+    );
 
+    let shipmentId = null;
+    let label = null;
+
+    try {
       // 2. Create shipment
       const shipment = await create3plShipment(test.country, body);
-      const shipmentId = shipment.id;
+      shipmentId = shipment.id;
       console.log(`📦 Shipment created: ${shipmentId}`);
+    } catch (err) {
+      console.error("❌ Shipment creation failed:", err.message || err);
+    }
 
-      // 3. Generate label
-      const label = await generateLabel(shipmentId, test.country);
+    try {
+      if (shipmentId) {
+        // 3. Generate label
+        label = await generateLabel(shipmentId, test.country);
 
-      savePDF(label.base64, label.tracking.number, body.data.orderNumber);
+        if (label?.error) {
+          console.error(
+            "❌ Label generation returned error:",
+            label.error,
+            "status:",
+            label.status,
+          );
+          label = null;
+        }
+      }
+    } catch (err) {
+      console.error("❌ Label generation failed:", err.message || err);
+      label = null;
+    }
 
-      const logs = await waitForLogs(test.carrierCode, body.data.orderNumber);
+    try {
+      if (label && label.base64 && label.tracking?.number) {
+        savePDF(label.base64, label.tracking.number, body.data.orderNumber);
+      } else if (shipmentId && !label) {
+        console.log(
+          "⚠️ Skipping PDF save because label generation did not succeed",
+        );
+      }
+    } catch (err) {
+      console.error("❌ savePDF failed:", err.message || err);
+    }
+
+    const parcelNumber = body.data.parcels?.[0]?.number;
+    const combinedOrderId = parcelNumber
+      ? `${body.data.orderNumber}-${parcelNumber}`
+      : null;
+
+    const searchTerms = [
+      body.data.orderNumber,
+      parcelNumber,
+      combinedOrderId,
+    ].filter(Boolean);
+
+    try {
+      const logs = await waitForLogs(test.carrierCode, searchTerms);
+
+      console.log("LOGS FOUND:", !!logs);
 
       if (logs) {
         const schema = extractShippingSchema(logs);
@@ -83,14 +129,14 @@ async function testShipments() {
       } else {
         console.log("⚠️ No related logs found");
       }
-
-      if (!label) {
-        console.log("⚠️ Label not generated");
-      } else {
-        console.log("🏷️ Label generated:");
-      }
     } catch (err) {
-      console.error("❌ Test failed:", err.message);
+      console.error("❌ Log retrieval failed:", err.message || err);
+    }
+
+    if (!label) {
+      console.log("⚠️ Label not generated");
+    } else {
+      console.log("🏷️ Label generated:");
     }
   }
 }

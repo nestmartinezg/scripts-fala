@@ -3,3 +3,7 @@ node_modules
 errors.ndjson
 estados.ndjson
 output/
+comments.txt
+.tokenUat.json
+.tokenProd.json
+labels*

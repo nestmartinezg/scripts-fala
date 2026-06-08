@@ -4,8 +4,8 @@ import dotenv from "dotenv";
 import { config } from "../config.js";
 dotenv.config();
 
-const TOKEN_FILE = process.env.ENV
-  ? uat & "./tokenUat.json"
+const TOKEN_FILE = process.env.ENV === "uat"
+  ? "./tokenUat.json"
   : "./tokenProd.json";
 
 function loadSavedToken() {

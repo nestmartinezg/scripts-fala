@@ -2,13 +2,15 @@ import { readFromCSV, savePDF } from "../utils/files.js";
 import { runConcurrent } from "../utils/concurrency.js";
 import { generateLabel } from "../utils/api.js";
 import { countryFromCurrency } from "../utils/utils.js";
+import { createLogEntry, writeSortedLogs, clearLabelsDirectory } from "../utils/utils.js";
 import { getShipmentById } from "../utils/api.js";
-import { logFailure } from "../utils/utils.js";
 import { getDnNodeInfo } from "../utils/dnClient.js";
 import fs from "fs";
 
+const allLogs = []; // Collect all logs to sort and write at the end
+
 async function main() {
-  fs.writeFileSync("./errors.ndjson", "");
+  clearLabelsDirectory();
 
   const shipments = readFromCSV("shipments.csv");
 
@@ -28,6 +30,7 @@ async function main() {
     const country = countryFromCurrency(currency).toUpperCase();
 
     const orderNumber = details.data?.orderNumber;
+    const carrierName = details.data?.carrierCode;
 
     const label = await generateLabel(shipmentId, country);
 
@@ -41,26 +44,46 @@ async function main() {
         );
       }
 
-      logFailure({
-        carrier: details.carrierCode,
-        carrierConnector: details.carrierConnector,
+      const logEntry = createLogEntry({
+        carrierName,
         shipmentId,
+        status: label?.status || 500,
         orderNumber,
         country,
+        carrier: details.carrierCode,
+        carrierConnector: details.carrierConnector,
         shipToNodeId: details.data.shipTo.nodeId,
         nodeName: dnInfo?.nodeName || "",
         nodeId: dnInfo?.referenceValue || "",
-        status: label?.status,
         errorCode: label?.error?.code,
         errorMessage: label?.error?.message,
         detail: label?.error?.detail,
         timestamp: new Date().toISOString(),
       });
+
+      allLogs.push(logEntry);
       return;
     }
 
+    // Log successful shipment
+    const logEntry = createLogEntry({
+      carrierName,
+      shipmentId,
+      status: 200,
+      orderNumber,
+      country,
+      carrier: details.carrierCode,
+      carrierConnector: details.carrierConnector,
+      trackingNumber: label.tracking.number,
+      timestamp: new Date().toISOString(),
+    });
+
+    allLogs.push(logEntry);
     savePDF(label.base64, label.tracking.number, orderNumber);
   });
+
+  // Write all logs sorted by status (errors first, then OKs)
+  writeSortedLogs(allLogs);
 
   console.log("🎉 All done!");
 }

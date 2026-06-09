@@ -41,14 +41,87 @@ export const modifiers = {
     CL: (body) => {
       body.data.shipperAccount = "121d7c7f-372b-4c97-97ef-3814b6a3a1d9";
       body.data.shipFrom.municipalCode = "8d20250d-5db5-44ef-bc1c-99bdbad99777";
-      body.data.shipFrom.addressLine1 = "avnda.lo esperjo@";
+      body.data.shipFrom.addressLine1 = "avnda.lo espérjo@";
       body.data.shipFrom.addressLine2 = "n° 12345";
       body.data.shipFrom.addressLine3 = "n°| 12345";
-      body.data.shipTo.addressLine1 = "avnda.lo esperjo@";
+      body.data.shipTo.addressLine1 = "avnda.lo espérjo@";
       body.data.shipTo.addressLine2 = "n° 12345";
       body.data.shipTo.addressLine3 = "n°| 12345";
       body.data.shipTo.municipalCode = "8d20250d-5db5-44ef-bc1c-99bdbad99777";
       body.data.shipmentLines[0] = {
+        number: 1,
+        item: {
+          internationalDescription: [
+            {
+              code: "CN",
+              name: "遊戲機",
+            },
+          ],
+          categoryName: "TestcategoryName",
+          categoryCode: "TestcategoryCode",
+          model: "Testmodel",
+          imei: "Testimei",
+          isAlcohol: false,
+          isDangerous: false,
+          duties: {
+            currency: "CLP",
+            centAmount: 137220,
+            fraction: 1,
+          },
+          shippingFee: {
+            currency: "CLP",
+            centAmount: 18477,
+            fraction: 1,
+          },
+          commission: {
+            currency: "CLP",
+            centAmount: 64544,
+            fraction: 1,
+          },
+          insure: {
+            currency: "CLP",
+            centAmount: 200,
+            fraction: 1,
+          },
+          exchangeRate: {
+            fromCurrency: "USD",
+            toCurrency: "CLP",
+            exchangeDate: "2024-12-24T12:29:56.692Z",
+            exchangeFee: {
+              currency: "CLP",
+              centAmount: 970,
+              fraction: 1,
+            },
+          },
+          referenceFee: "TestReferenceFee",
+          description: "SETX30 COLGARDOR DE ROPA PLAST",
+          productId: "2379267601",
+          variantId: "100445950",
+          offeringId: "100445950",
+          sellerId: "CN0030CL",
+          brand: "Testbrand",
+          quantity: {
+            unit: "C/U",
+            value: "2",
+          },
+          unitPrice: {
+            currency: "CLP",
+            centAmount: 709990,
+            fraction: 1,
+          },
+          itemDimensions: [
+            {
+              width: "13",
+              height: "12",
+              length: "18",
+              weight: "1",
+              sizeUOM: "cm",
+              weightUOM: "kg",
+            },
+          ],
+        },
+      };
+      body.data.shipmentLines[1] = {
         number: 1,
         item: {
           internationalDescription: [

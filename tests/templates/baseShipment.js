@@ -46,6 +46,40 @@ export const baseShipment = {
         ],
         rawResponseCarrier: {},
       },
+      {
+        number: "762216",
+        parcelAmount: {
+          currency: "CLP",
+          centAmount: 4980.3223,
+          fraction: 1,
+        },
+        dimensions: {
+          width: "62.3",
+          height: "4",
+          length: "2",
+          weight: "5",
+          sizeUOM: "cm",
+          weightUOM: "kg",
+        },
+        parcelLines: [
+          {
+            lineId: "edb15cc0-31b8-4697-9d1c-772d02369e11",
+            shipmentLineNumber: "1",
+            quantity: {
+              unit: "C/U",
+              value: "10",
+            },
+          },
+        ],
+        customInfo: [
+          {
+            id: "partNum",
+            values: [],
+            value: "1/1",
+          },
+        ],
+        rawResponseCarrier: {},
+      },
     ],
     shipmentLines: [
       {

@@ -34,7 +34,8 @@ export async function generateLabel(shipmentId, country) {
   }
 
   console.log(`✅ OK for shipment ${shipmentId}`);
-  return result.data?.data?.[0];
+  const labels = result.data?.data;
+  return Array.isArray(labels) ? labels : [];
 }
 
 export async function getShipmentById(shipmentId) {

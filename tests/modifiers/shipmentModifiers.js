@@ -13,6 +13,20 @@ export const modifiers = {
       return body;
     },
   },
+  ibis_bt: {
+    CO: (body) => {
+      body.data.shipperAccount = "8f7a70b8-695a-4346-b410-607cb47ecba3";
+      body.data.shipFrom.municipalCode = "59a6aec4-fc51-4f3b-ab5e-62fd7a1076c0";
+      body.data.shipTo.municipalCode = "59a6aec4-fc51-4f3b-ab5e-62fd7a1076c0";
+      return body;
+    },
+    PE: (body) => {
+      body.data.shipperAccount = "8f7a70b8-695a-4346-b410-607cb47ecba3";
+      body.data.shipFrom.municipalCode = "c6b7a50c-60f3-4687-91d0-9461d538812a";
+      body.data.shipTo.municipalCode = "c6b7a50c-60f3-4687-91d0-9461d538812a";
+      return body;
+    },
+  },
   servientrega: {
     CO: (body) => {
       body.data.shipperAccount = "7135f4b6-6700-40fa-8597-3499d9332d41";

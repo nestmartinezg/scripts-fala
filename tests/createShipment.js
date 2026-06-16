@@ -2,9 +2,39 @@ import { modifiers } from "./modifiers/shipmentModifiers.js";
 import { randomDigits } from "../utils/utils.js";
 import { baseShipment } from "./templates/baseShipment.js";
 import { create3plShipment, generateLabel } from "../utils/api.js";
-import { savePDF } from "../utils/files.js";
+import { saveLabelPDF } from "../utils/files.js";
 import { waitForLogs, extractShippingSchema } from "../utils/k8logs.js";
 import fs from "fs";
+import path from "path";
+
+// Set to false to skip kubernetes log retrieval
+const FETCH_K8S_LOGS = process.env.FETCH_K8S_LOGS !== "false";
+
+function clearLabelsFolder() {
+  const labelsPath = path.resolve(process.cwd(), "labels");
+
+  if (!fs.existsSync(labelsPath)) {
+    fs.mkdirSync(labelsPath, { recursive: true });
+    return;
+  }
+
+  const entries = fs.readdirSync(labelsPath);
+
+  for (const entry of entries) {
+    const entryPath = path.join(labelsPath, entry);
+    fs.rmSync(entryPath, { recursive: true, force: true });
+  }
+
+  console.log("🧹 labels folder cleaned");
+}
+
+function normalizeLabels(labelResponse) {
+  if (!labelResponse) {
+    return [];
+  }
+
+  return Array.isArray(labelResponse) ? labelResponse : [labelResponse];
+}
 
 export async function modify3plShipment(
   shipmentType = "FORWARD",
@@ -36,12 +66,32 @@ export async function modify3plShipment(
 }
 
 async function testShipments() {
+  clearLabelsFolder();
+
   const testCases = [
     {
       shipmentType: "FORWARD",
-      country: "CL",
-      carrierCode: "mailamericas",
-      carrierConnector: "mailamericas",
+      country: "CO",
+      carrierCode: "ibis",
+      carrierConnector: "ibis",
+    },
+    {
+      shipmentType: "FORWARD",
+      country: "CO",
+      carrierCode: "ibis_bt",
+      carrierConnector: "ibis",
+    },
+    {
+      shipmentType: "FORWARD",
+      country: "PE",
+      carrierCode: "ibis_bt",
+      carrierConnector: "ibis",
+    },
+    {
+      shipmentType: "FORWARD",
+      country: "PE",
+      carrierCode: "ibis",
+      carrierConnector: "ibis",
     },
   ];
 
@@ -56,7 +106,7 @@ async function testShipments() {
     );
 
     let shipmentId = null;
-    let label = null;
+    let labels = [];
 
     try {
       // 2. Create shipment
@@ -70,27 +120,46 @@ async function testShipments() {
     try {
       if (shipmentId) {
         // 3. Generate label
-        label = await generateLabel(shipmentId, test.country);
+        const labelResponse = await generateLabel(shipmentId, test.country);
+        labels = normalizeLabels(labelResponse);
 
-        if (label?.error) {
+        if (labelResponse?.error) {
           console.error(
             "❌ Label generation returned error:",
-            label.error,
+            labelResponse.error,
             "status:",
-            label.status,
+            labelResponse.status,
           );
-          label = null;
+          labels = [];
         }
       }
     } catch (err) {
       console.error("❌ Label generation failed:", err.message || err);
-      label = null;
+      labels = [];
     }
 
     try {
-      if (label && label.base64 && label.tracking?.number) {
-        savePDF(label.base64, label.tracking.number, body.data.orderNumber);
-      } else if (shipmentId && !label) {
+      const validLabels = labels.filter(
+        (currentLabel) => currentLabel?.tracking?.number,
+      );
+
+      if (validLabels.length > 0) {
+        let savedCount = 0;
+
+        for (const currentLabel of validLabels) {
+          try {
+            await saveLabelPDF(currentLabel, body.data.orderNumber);
+            savedCount += 1;
+          } catch (error) {
+            console.error(
+              `❌ Failed to save label ${currentLabel?.tracking?.number}:`,
+              error.message || error,
+            );
+          }
+        }
+
+        console.log(`📄 Labels saved: ${savedCount}/${validLabels.length}`);
+      } else if (shipmentId) {
         console.log(
           "⚠️ Skipping PDF save because label generation did not succeed",
         );
@@ -104,39 +173,41 @@ async function testShipments() {
       ? `${body.data.orderNumber}-${parcelNumber}`
       : null;
 
-    const searchTerms = [
-      body.data.orderNumber,
-      parcelNumber,
-      combinedOrderId,
-    ].filter(Boolean);
+    if (FETCH_K8S_LOGS) {
+      const searchTerms = [
+        body.data.orderNumber,
+        parcelNumber,
+        combinedOrderId,
+      ].filter(Boolean);
 
-    try {
-      const logs = await waitForLogs(test.carrierCode, searchTerms);
+      try {
+        const logs = await waitForLogs(test.carrierCode, searchTerms);
 
-      console.log("LOGS FOUND:", !!logs);
+        console.log("LOGS FOUND:", !!logs);
 
-      if (logs) {
-        const schema = extractShippingSchema(logs);
+        if (logs) {
+          const schema = extractShippingSchema(logs);
 
-        if (schema) {
-          console.log("\n📦 Extracted inShippingSchema:\n");
+          if (schema) {
+            console.log("\n📦 Extracted inShippingSchema:\n");
 
-          fs.writeFileSync(
-            `./logs/${body.data.orderNumber}.json`,
-            JSON.stringify(schema, null, 2),
-          );
+            fs.writeFileSync(
+              `./logs/${body.data.orderNumber}.json`,
+              JSON.stringify(schema, null, 2),
+            );
+          }
+        } else {
+          console.log("⚠️ No related logs found");
         }
-      } else {
-        console.log("⚠️ No related logs found");
+      } catch (err) {
+        console.error("❌ Log retrieval failed:", err.message || err);
       }
-    } catch (err) {
-      console.error("❌ Log retrieval failed:", err.message || err);
     }
 
-    if (!label) {
+    if (labels.length === 0) {
       console.log("⚠️ Label not generated");
     } else {
-      console.log("🏷️ Label generated:");
+      console.log(`🏷️ Labels generated: ${labels.length}`);
     }
   }
 }

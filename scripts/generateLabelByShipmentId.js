@@ -1,13 +1,25 @@
-import { readFromCSV, savePDF } from "../utils/files.js";
+import { readFromCSV, saveLabelPDF } from "../utils/files.js";
 import { runConcurrent } from "../utils/concurrency.js";
 import { generateLabel } from "../utils/api.js";
 import { countryFromCurrency } from "../utils/utils.js";
-import { createLogEntry, writeSortedLogs, clearLabelsDirectory } from "../utils/utils.js";
+import {
+  createLogEntry,
+  writeSortedLogs,
+  clearLabelsDirectory,
+} from "../utils/utils.js";
 import { getShipmentById } from "../utils/api.js";
 import { getDnNodeInfo } from "../utils/dnClient.js";
 import fs from "fs";
 
 const allLogs = []; // Collect all logs to sort and write at the end
+
+function normalizeLabels(labelResponse) {
+  if (!labelResponse) {
+    return [];
+  }
+
+  return Array.isArray(labelResponse) ? labelResponse : [labelResponse];
+}
 
 async function main() {
   clearLabelsDirectory();
@@ -32,9 +44,10 @@ async function main() {
     const orderNumber = details.data?.orderNumber;
     const carrierName = details.data?.carrierCode;
 
-    const label = await generateLabel(shipmentId, country);
+    const labelResponse = await generateLabel(shipmentId, country);
+    const labels = normalizeLabels(labelResponse);
 
-    if (!label || label.error) {
+    if (labelResponse?.error || labels.length === 0) {
       let dnInfo;
       if (details.data.shipTo.nodeId) {
         dnInfo = await getDnNodeInfo(
@@ -47,7 +60,7 @@ async function main() {
       const logEntry = createLogEntry({
         carrierName,
         shipmentId,
-        status: label?.status || 500,
+        status: labelResponse?.status || 500,
         orderNumber,
         country,
         carrier: details.carrierCode,
@@ -55,9 +68,9 @@ async function main() {
         shipToNodeId: details.data.shipTo.nodeId,
         nodeName: dnInfo?.nodeName || "",
         nodeId: dnInfo?.referenceValue || "",
-        errorCode: label?.error?.code,
-        errorMessage: label?.error?.message,
-        detail: label?.error?.detail,
+        errorCode: labelResponse?.error?.code,
+        errorMessage: labelResponse?.error?.message,
+        detail: labelResponse?.error?.detail,
         timestamp: new Date().toISOString(),
       });
 
@@ -74,12 +87,26 @@ async function main() {
       country,
       carrier: details.carrierCode,
       carrierConnector: details.carrierConnector,
-      trackingNumber: label.tracking.number,
+      trackingNumber: labels
+        .map((item) => item?.tracking?.number)
+        .filter(Boolean),
       timestamp: new Date().toISOString(),
     });
 
     allLogs.push(logEntry);
-    savePDF(label.base64, label.tracking.number, orderNumber);
+
+    for (const label of labels) {
+      if (label?.tracking?.number) {
+        try {
+          await saveLabelPDF(label, orderNumber);
+        } catch (error) {
+          console.error(
+            `❌ Failed to save label ${label?.tracking?.number}:`,
+            error.message || error,
+          );
+        }
+      }
+    }
   });
 
   // Write all logs sorted by status (errors first, then OKs)

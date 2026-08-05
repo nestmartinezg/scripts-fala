@@ -72,12 +72,6 @@ async function testShipments() {
     {
       shipmentType: "FORWARD",
       country: "CO",
-      carrierCode: "ibis",
-      carrierConnector: "ibis",
-    },
-    {
-      shipmentType: "FORWARD",
-      country: "CO",
       carrierCode: "ibis_bt",
       carrierConnector: "ibis",
     },
@@ -85,12 +79,6 @@ async function testShipments() {
       shipmentType: "FORWARD",
       country: "PE",
       carrierCode: "ibis_bt",
-      carrierConnector: "ibis",
-    },
-    {
-      shipmentType: "FORWARD",
-      country: "PE",
-      carrierCode: "ibis",
       carrierConnector: "ibis",
     },
   ];

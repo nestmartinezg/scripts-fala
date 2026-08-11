@@ -1,4 +1,6 @@
 .env
+sa.json
+*.service-account.json
 node_modules
 errors.ndjson
 estados.ndjson

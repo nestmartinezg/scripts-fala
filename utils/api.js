@@ -25,6 +25,7 @@ export async function generateLabel(shipmentId, country) {
     headers: {
       "x-country": country,
       reprocessed: true,
+      redesign: true,
     },
   });
 

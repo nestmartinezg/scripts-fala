@@ -1,103 +1,189 @@
-import { execSync } from "child_process";
+import { spawnSync } from "child_process";
+
+const cluster = {
+  name: "sche-trmg-carrier-cluster",
+  region: "us-east4",
+  project: "prod-corp-schn-trmg-carriers",
+};
+
+const carrierIntegrations = {
+  falaflex: {
+    namespace: "threepl-cl",
+    podPrefix: "enviame-integrator-service-",
+  },
+  directo: {
+    namespace: "threepl-cl",
+    podPrefix: "enviame-integrator-service-",
+  },
+};
 
 const carrierNamespaces = {
   ibis: "threepl",
   ibisdirecto: "threepl",
-
-  directo: "threepl-cl",
   chilexpress: "threepl-cl",
   starken: "threepl-cl",
-
   servientrega: "threepl-co",
   mailamericas: "threepl-cl",
 };
 
-function getNamespaceByCarrier(carrier) {
-  return carrierNamespaces[carrier] || "threepl";
-}
+let clusterCredentialsReady = false;
+const isWsl = Boolean(process.env.WSL_DISTRO_NAME || process.env.WSL_INTEROP);
+const windowsCommandCwd = process.env.WINDOWS_KUBECTL_CWD || "/mnt/c";
 
-function escapeShellArg(value) {
-  return `'${String(value).replace(/'/g, "'\\''")}'`;
-}
+function getIntegration(carrier) {
+  const normalizedCarrier = String(carrier).toLowerCase();
 
-export function getCarrierPod(carrier) {
-  try {
-    const namespace = getNamespaceByCarrier(carrier);
-
-    const command = `
-      kubectl get pods -n ${escapeShellArg(namespace)} | grep -F ${escapeShellArg(carrier)}
-    `;
-
-    const output = execSync(command, {
-      encoding: "utf-8",
-    });
-
-    const firstLine = output.split("\n")[0];
-
-    if (!firstLine) {
-      return null;
+  return (
+    carrierIntegrations[normalizedCarrier] || {
+      namespace: carrierNamespaces[normalizedCarrier] || "threepl",
+      podPrefix: `${normalizedCarrier}-`,
     }
+  );
+}
 
-    const podName = firstLine.split(/\s+/)[0];
+function run(command, args, options = {}) {
+  const result = spawnSync(command, args, {
+    encoding: "utf8",
+    timeout: 30_000,
+    // Carrier pods can easily emit more than Node's default 1 MiB buffer.
+    maxBuffer: 50 * 1024 * 1024,
+    ...options,
+  });
 
-    return podName;
-  } catch (err) {
-    return null;
+  if (result.error) {
+    throw result.error;
   }
+
+  if (result.status !== 0) {
+    const message = result.stderr?.trim() || result.stdout?.trim();
+    throw new Error(message || `${command} exited with code ${result.status}`);
+  }
+
+  return result.stdout;
+}
+
+function runKubectl(args) {
+  const commands = process.env.KUBECTL_BIN
+    ? [process.env.KUBECTL_BIN]
+    : isWsl
+      ? ["kubectl.exe", "kubectl"]
+      : ["kubectl", "kubectl.exe"];
+  let lastError;
+
+  for (const command of commands) {
+    try {
+      const options = command.toLowerCase().endsWith(".exe")
+        ? {
+            // A Windows executable launched from WSL sees the repository path
+            // as a UNC directory. cmd.exe (used by the GKE auth plugin) cannot
+            // use that as its working directory, so start it from C:\ instead.
+            cwd: windowsCommandCwd,
+          }
+        : {};
+
+      return run(command, args, options);
+    } catch (error) {
+      lastError = error;
+
+      // WSL can resolve the Windows kubectl shim as `kubectl` but refuse to
+      // execute it without the .exe suffix. In that case, try kubectl.exe.
+      if (!["ENOENT", "EACCES", "EPERM"].includes(error?.code)) {
+        throw error;
+      }
+    }
+  }
+
+  throw lastError || new Error("kubectl is not installed");
+}
+
+/**
+ * Refreshes the local kubeconfig for the production carrier cluster.
+ * This is delayed until a Falaflex failure actually needs Kubernetes logs.
+ */
+export function ensureClusterCredentials() {
+  if (clusterCredentialsReady || process.env.REFRESH_K8S_CREDENTIALS === "false") {
+    return;
+  }
+
+  const args = [
+    "container",
+    "clusters",
+    "get-credentials",
+    cluster.name,
+    "--region",
+    cluster.region,
+    "--project",
+    cluster.project,
+  ];
+
+  if (isWsl && !process.env.GCLOUD_BIN) {
+    // kubectl.exe launches the Windows GKE auth plugin, which reads the
+    // Windows gcloud credential store. Use that same gcloud installation for
+    // get-credentials instead of mixing it with WSL's credential store.
+    run("cmd.exe", ["/d", "/s", "/c", "gcloud.cmd", ...args], {
+      cwd: windowsCommandCwd,
+    });
+  } else {
+    run(process.env.GCLOUD_BIN || "gcloud", args);
+  }
+
+  clusterCredentialsReady = true;
+}
+
+export function getCarrierPods(carrier) {
+  const { namespace, podPrefix } = getIntegration(carrier);
+  const output = runKubectl([
+    "get",
+    "pods",
+    "-n",
+    namespace,
+    "-o",
+    "jsonpath={range .items[*]}{.metadata.name}{\"\\n\"}{end}",
+  ]);
+
+  return output
+    .split("\n")
+    .map((pod) => pod.trim())
+    .filter((pod) => pod.startsWith(podPrefix));
+}
+
+// Kept for callers that only need one pod.
+export function getCarrierPod(carrier) {
+  return getCarrierPods(carrier)[0] || null;
 }
 
 export function getLogs(pod, namespace) {
-  try {
-    const command = `
-      kubectl logs ${escapeShellArg(pod)} -n ${escapeShellArg(namespace)} --all-containers --since=15m --tail=1000
-    `;
+  return runKubectl([
+    "logs",
+    pod,
+    "-n",
+    namespace,
+    "--all-containers=true",
+    "--since=10m",
+    "--tail=3000",
+  ]);
+}
 
-    const logs = execSync(command, {
-      encoding: "utf-8",
-      stdio: ["pipe", "pipe", "ignore"],
-    });
-
-    return logs;
-  } catch (err) {
-    return null;
-  }
+function normalizeSearchTerms(searchTerms) {
+  return (Array.isArray(searchTerms) ? searchTerms : [searchTerms])
+    .filter(Boolean)
+    .map(String);
 }
 
 function filterShippingSchemaLogs(logs, searchTerms) {
   if (!logs) {
-    return null;
+    return [];
   }
 
-  const terms = Array.isArray(searchTerms) ? searchTerms : [searchTerms];
-  const lines = logs.split("\n").filter(Boolean);
-  const matches = [];
+  const terms = normalizeSearchTerms(searchTerms);
 
-  for (const line of lines) {
+  return logs.split("\n").filter((line) => {
     if (!line.includes("inShippingSchema")) {
-      continue;
+      return false;
     }
 
-    if (terms.some((term) => line.includes(term))) {
-      matches.push(line);
-      continue;
-    }
-
-    try {
-      const parsed = JSON.parse(line);
-      if (parsed.message !== "inShippingSchema") {
-        continue;
-      }
-
-      const text = JSON.stringify(parsed);
-      if (terms.some((term) => text.includes(term))) {
-        matches.push(line);
-      }
-    } catch (err) {
-      // ignore malformed lines
-    }
-  }
-
-  return matches.length > 0 ? matches.join("\n") : null;
+    return terms.some((term) => line.includes(term));
+  });
 }
 
 export async function waitForLogs(
@@ -106,52 +192,52 @@ export async function waitForLogs(
   retries = 10,
   delay = 2000,
 ) {
+  ensureClusterCredentials();
+  const { namespace } = getIntegration(carrier);
+
   for (let i = 0; i < retries; i++) {
-    const pod = getCarrierPod(carrier);
-    const namespace = getNamespaceByCarrier(carrier);
+    const pods = getCarrierPods(carrier);
 
-    if (!pod) {
-      console.log(`⚠️ No pod found for ${carrier}`);
+    if (pods.length === 0) {
+      console.log(`⚠️ No integration pods found for ${carrier}`);
+    } else {
+      console.log(`📡 Searching ${pods.length} integration pod(s) for ${carrier}`);
+    }
 
+    for (const pod of pods) {
+      try {
+        const matches = filterShippingSchemaLogs(
+          getLogs(pod, namespace),
+          searchTerms,
+        );
+
+        if (matches.length > 0) {
+          return matches.join("\n");
+        }
+      } catch (error) {
+        console.warn(`⚠️ Could not read logs from ${pod}: ${error.message}`);
+      }
+    }
+
+    if (i < retries - 1) {
+      console.log(`⏳ Waiting for logs... (${i + 1}/${retries})`);
       await new Promise((resolve) => setTimeout(resolve, delay));
-
-      continue;
     }
-
-    console.log(`📡 Using pod: ${pod}`);
-
-    const rawLogs = getLogs(pod, namespace);
-    const logs = filterShippingSchemaLogs(rawLogs, searchTerms);
-
-    if (logs && logs.trim().length > 0) {
-      return logs;
-    }
-
-    if (i === retries - 1 && rawLogs) {
-      console.log(
-        "⚠️ Failed to match inShippingSchema with search terms:",
-        searchTerms,
-      );
-      console.log("--- last raw logs snippet ---");
-      console.log(rawLogs.split("\n").slice(-20).join("\n"));
-    }
-
-    console.log(`⏳ Waiting for logs... (${i + 1}/${retries})`);
-
-    await new Promise((resolve) => setTimeout(resolve, delay));
   }
 
   return null;
 }
 
-export function extractShippingSchema(logs) {
+/**
+ * Returns only the carrier endpoint and request body. Headers are deliberately
+ * excluded because log entries may contain API keys or other credentials.
+ */
+export function extractShippingRequest(logs) {
   if (!logs) {
     return null;
   }
 
-  const lines = logs.split("\n").filter(Boolean);
-
-  for (const line of lines) {
+  for (const line of logs.split("\n").filter(Boolean)) {
     try {
       const parsed = JSON.parse(line);
 
@@ -159,19 +245,28 @@ export function extractShippingSchema(logs) {
         continue;
       }
 
-      // Some carriers
-      if (parsed.inShippingSchema) {
-        return parsed.inShippingSchema;
+      if (parsed.config?.url && parsed.config?.data) {
+        return {
+          url: parsed.config.url,
+          body: parsed.config.data,
+        };
       }
 
-      // MailAmericas
-      if (parsed.config?.data) {
-        return parsed.config.data;
+      if (parsed.inShippingSchema) {
+        return {
+          url: parsed.inShippingSchema.url || null,
+          body: parsed.inShippingSchema.data || parsed.inShippingSchema,
+        };
       }
-    } catch (err) {
-      // ignore malformed lines
+    } catch {
+      // A pod can emit non-JSON lines alongside the structured logs.
     }
   }
 
   return null;
+}
+
+// Backwards-compatible helper used by tests/createShipment.js.
+export function extractShippingSchema(logs) {
+  return extractShippingRequest(logs)?.body || null;
 }

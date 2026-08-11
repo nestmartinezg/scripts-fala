@@ -12,9 +12,14 @@ import {
   clearLabelsDirectory,
 } from "../utils/utils.js";
 import { getDnNodeInfo } from "../utils/dnClient.js";
-import fs from "fs";
+import { extractShippingRequest, waitForLogs } from "../utils/k8logs.js";
+import {
+  clearFalaflexEmail,
+  writeFalaflexEmail,
+} from "../utils/emailReport.js";
 
 const allLogs = []; // Collect all logs to sort and write at the end
+const falaflexEmailItems = [];
 
 function normalizeLabels(labelResponse) {
   if (!labelResponse) {
@@ -90,6 +95,47 @@ async function processOc(oc) {
         });
 
         allLogs.push(logEntry);
+
+        if (String(carrierName).toLowerCase() === "falaflex") {
+          const parcel = details.data?.parcels?.[0];
+          const parcelNumber = parcel?.number;
+          const parcelExternalId = parcel?.externalId;
+          const searchTerms = [
+            parcelNumber,
+            parcelExternalId,
+            parcelNumber ? `${orderNumber}-${parcelNumber}` : null,
+            parcelExternalId ? `${orderNumber}-${parcelExternalId}` : null,
+            orderNumber,
+            shipmentId,
+          ].filter(Boolean);
+          let request = null;
+
+          try {
+            const logs = await waitForLogs("falaflex", searchTerms);
+            request = extractShippingRequest(logs);
+
+            if (!request) {
+              console.warn(
+                `⚠️ Falaflex request not found in Kubernetes for OC ${orderNumber}`,
+              );
+            } else {
+              console.log(
+                `✅ Falaflex request found in Kubernetes for OC ${orderNumber}`,
+              );
+            }
+          } catch (error) {
+            console.warn(
+              `⚠️ Kubernetes lookup failed for OC ${orderNumber}: ${error.message}`,
+            );
+          }
+
+          falaflexEmailItems.push({
+            orderNumber,
+            error: labelResponse?.error,
+            request,
+          });
+        }
+
         return;
       }
 
@@ -113,7 +159,9 @@ async function processOc(oc) {
       for (const label of labels) {
         if (label?.tracking?.number) {
           try {
-            await saveLabelPDF(label, orderNumber);
+            await saveLabelPDF(label, orderNumber, {
+              alsoSaveInLabelsRoot: true,
+            });
           } catch (error) {
             console.error(
               `❌ Failed to save label ${label?.tracking?.number}:`,
@@ -130,6 +178,7 @@ async function processOc(oc) {
 
 async function main() {
   clearLabelsDirectory();
+  clearFalaflexEmail();
 
   const ocs = readFromCSV("shipments.csv");
 
@@ -141,6 +190,7 @@ async function main() {
 
   // Write all logs sorted by status (errors first, then OKs)
   writeSortedLogs(allLogs);
+  writeFalaflexEmail(falaflexEmailItems);
 
   console.log("🎉 All done!");
 }

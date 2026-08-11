@@ -64,7 +64,11 @@ function isValidBase64Pdf(base64) {
   );
 }
 
-export async function saveLabelPDF(label, orderNumber) {
+export async function saveLabelPDF(
+  label,
+  orderNumber,
+  { alsoSaveInLabelsRoot = false } = {},
+) {
   const trackingNumber = label?.tracking?.number;
 
   if (!trackingNumber) {
@@ -73,11 +77,21 @@ export async function saveLabelPDF(label, orderNumber) {
 
   const orderFolder = ensureLabelFolders(orderNumber);
   const filePath = path.join(orderFolder, `${trackingNumber}.pdf`);
+  const rootFilePath = path.join("./labels", `${orderNumber}.pdf`);
+
+  const saveBuffer = (buffer, source) => {
+    fs.writeFileSync(filePath, buffer);
+    console.log(`📄 Saved PDF from ${source}: ${filePath}`);
+
+    if (alsoSaveInLabelsRoot) {
+      fs.writeFileSync(rootFilePath, buffer);
+      console.log(`📄 Saved PDF copy: ${rootFilePath}`);
+    }
+  };
 
   if (isValidBase64Pdf(label?.base64)) {
     const buffer = Buffer.from(label.base64, "base64");
-    fs.writeFileSync(filePath, buffer);
-    console.log(`📄 Saved PDF from base64: ${filePath}`);
+    saveBuffer(buffer, "base64");
     return;
   }
 
@@ -86,8 +100,7 @@ export async function saveLabelPDF(label, orderNumber) {
       const response = await axios.get(label.url, {
         responseType: "arraybuffer",
       });
-      fs.writeFileSync(filePath, Buffer.from(response.data));
-      console.log(`📄 Saved PDF from url: ${filePath}`);
+      saveBuffer(Buffer.from(response.data), "url");
       return;
     } catch (error) {
       const status = error?.response?.status;
